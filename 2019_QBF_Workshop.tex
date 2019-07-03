@@ -17,13 +17,14 @@
 \usepackage{mathtools}
 \DeclarePairedDelimiter\ev{\langle}{\rangle}%
 
-\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
-\newcommand{\ol}{\overline}
 
 \usepackage{array}
 %\newtheorem{lemma}{Lemma}
 \usepackage[customcolors]{hf-tikz}
 \usepackage{tikz}
+
+\newcommand{\ov}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
 
 \usepackage{xcolor}% http://ctan.org/pkg/xcol
 \definecolor{OliveGreen}{rgb}{0.2,0.7,0.2}
@@ -109,31 +110,146 @@
 %\end{frame}
 
 \begin{frame}{Solve DQBF: SAT or UNSAT?}
-%\vspace{0.2cm
+
+%\vspace{0.2cm}
+
 \begin{alertblock}{1. DQCNF formula:}
-	{		
-		$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-		   \{a,b,x\}, \{\ol{a},b,\ol{x}\}, \{a,\ol{b},y\}, \{\ol{a},\ol{b},\ol{y}\}  \\
-		   \{c,x,y\}, \{c,\ol{x},\ol{y}, a\}, \{\ol{c},x,\ol{y}\}, \{\ol{c},\ol{x},\ol{y}\} \\
-		   \{d,e,x\}, \{\ol{d},e,\ol{x}, c\} \{d,\ol{e},y\}, \{\ol{d},\ol{e},\ol{y}\} $
+	{
+		$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_2(x_2,x_3) \, \exists y_3(x_1) : \newline$
+		$(y_{1} \vee x_1) \, \wedge \, (\ov{y_1} \vee x_2)  \newline$ 
+		$ \, \wedge \, (\ov{y_2} \vee \ov{x_2} \vee x_3)  \newline \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1)$
+		\vspace{0.2cm}
 	}
 \end{alertblock}
-%\begin{exampleblock}{Solve the DCNF}
-%	{
-%		\begin{enumerate}
-%			\item Pick $y_2$: $\overline{y_2}$ is pure \\
-%			 $y_2 \rightarrow 0$ (removing the third clause).
-%			\item Pick $y_3$: $y_3 \rightarrow x_1$  \\
-%			removing the fourth and fifth clauses.	
-%		%	Both these autarkies are also $Eaut_1$-autarkies.
-%		\end{enumerate}
-%	}
-%\end{exampleblock}
-%Reduction result: \\
-%
-%\forall x_1,x_2,x_3 \exists y_1(x_1,x_2) : (y_1 \vee x_1) \wedge (\overline{y_1} \vee x_2)$
+\pause
+
+Rules of the Game: \\
+
+\begin{itemize}
+	\pause
+	
+	\item Substitute functions in place of existential variables.
+	\pause
+	
+	\item Clauses are satisfied.
+\end{itemize}
+\pause
+ 
+\textbf{Ques.} What are allowed values? \\
+\pause
+
+Ans: Any function of dependency set variables.
+\end{frame}
+
+\begin{frame}{Solve DQBF: SAT or UNSAT?}
+
+%\vspace{0.2cm}
+
+\begin{alertblock}{1. DQCNF formula:}
+	{
+		$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_2(x_2,x_3) \, \exists y_3(x_1) : \newline$
+		$(y_{1} \vee x_1) \, \wedge \, (\ov{y_1} \vee x_2)  \newline$ 
+		$ \, \wedge \, (\ov{y_2} \vee \ov{x_2} \vee x_3)  \newline \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1)$
+		\vspace{0.2cm}
+	}
+\end{alertblock}
+
+\begin{block}{Boolean functions}
+ \only<2> {
+$y_1 \to 0$, $ y_1 \to 1 \newline$
+$y_2 \to 0$, $ y_2 \to 1 \newline$
+$y_3 \to 0$, $ y_3 \to 1$
+}
+ \only<3> {
+	$y_1 \to 0$, $ y_1 \to 1 \newline$
+	$y_2 \to 0$, $ y_2 \to 1 \newline$
+	$y_3 \to 0$, $ y_3 \to 1$, $y_3 \to x_1$, $ y_3 \to \ov{x_1}$ 
+}
+
+\only<4> {
+	$y_1 \to 0$, $ y_1 \to 1$, $y_1 \to x_1$, $ y_1 \to \ov{x_1}$, $y_1 \to x_2$, $ y_3 \to \ov{x_2} \newline$
+	$y_2 \to 0$, $ y_2 \to 1 \newline$
+	$y_3 \to 0$, $ y_3 \to 1$, $y_3 \to x_1$, $ y_3 \to \ov{x_1}$ 
+}
+
+\only<5> {
+	$y_1 \to 0$, $ y_1 \to 1$, $y_1 \to x_1$, $ y_1 \to \ov{x_1}$, $y_1 \to x_2$, $ y_1 \to \ov{x_2} \newline$
+	$y_2 \to 0$, $ y_2 \to 1, y_2 \to x_2$, $ y_2 \to \ov{x_2}$, $y_2 \to x_3$, $ y_2 \to \ov{x_3} \newline$
+	$y_3 \to 0$, $ y_3 \to 1$, $y_3 \to x_1$, $ y_3 \to \ov{x_1}$ 
+}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{}
+\begin{alertblock}{DQCNF formula:}
+	{
+		$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_2(x_2,x_3) \, \exists y_3(x_1) : \newline$
+		$(y_{1} \vee x_1) \, \wedge \, (\ov{y_1} \vee x_2)  \newline$ 
+		$ \, \wedge \, (\ov{y_2} \vee \ov{x_2} \vee x_3)  \newline \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1)$
+		\vspace{0.2cm}
+	}
+\end{alertblock}
+\begin{exampleblock}{Solve the DCNF}
+	{   \only Three choices $y_1, y_2, y_3$ ...
+		\pause 
+		\begin{enumerate}
+		%	\pause
+		\only \item Pick $y_2$\\
+		\pause 
+		  $\overline{y_2}$ is pure, $y_2 \rightarrow 0$ \newline 
+		\pause 
+		$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_3(x_1)  : (y_1 \vee x_1) \wedge (\overline{y_1} \vee x_2)
+		\, \wedge \, (1 \vee \ov{x_2} \vee x_3)  \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1) \newline$ \\ 
+        \pause 
+        $\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_3(x_1)  : (y_1 \vee x_1) \wedge (\overline{y_1} \vee x_2)
+        \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1)$ \\ 
+	    (removing the third clause).
+		%	Both these autarkies are also $Eaut_1$-autarkies.
+		\end{enumerate}
+	}
+\end{exampleblock}
+
 %\textbf{lean kernel} of the original formula.
 \end{frame}
+
+
+\begin{frame}{}
+\begin{alertblock}{DQCNF formula:}
+	{
+		$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_2(x_2,x_3) \, \exists y_3(x_1) : \newline$
+		$(y_{1} \vee x_1) \, \wedge \, (\ov{y_1} \vee x_2)  \newline$ 
+		$ \, \wedge \, (\ov{y_2} \vee \ov{x_2} \vee x_3)  \newline \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1)$
+		\vspace{0.2cm}
+	}
+\end{alertblock}
+\begin{exampleblock}{Solve the DCNF}
+	{ \begin{itemize}
+		\item Pick $y_3$: $y_3 \rightarrow x_1$  \\
+			\pause
+			
+			\pause 
+			$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2)  : (y_1 \vee x_1) \wedge (\overline{y_1} \vee x_2)
+			\, \wedge \, (x_1 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{x_1} \vee x_1) \newline$ \\ 
+			\pause 
+			$\forall x_1,x_2,x_3 \exists y_1(x_1,x_2) : (y_1 \vee x_1) \wedge (\overline{y_1} \vee x_2)$
+			
+			removing the fourth and fifth clauses.	
+			%	Both these autarkies are also $Eaut_1$-autarkies.
+		\end{itemize}
+	}
+\end{exampleblock}
+\pause
+\begin{alertblock}{Reduced DQCNF formula:}
+	{
+			$\forall x_1,x_2,x_3 \exists y_1(x_1,x_2) : (y_1 \vee x_1) \wedge (\overline{y_1} \vee x_2)$
+	}
+\end{alertblock}
+
+%\textbf{A1 Autarky lean kernel} of the original formula.
+\end{frame}
+
 
 %\begin{frame}{Autarkies for DQBF}
 %``Autarkies" are some form of redundancies in CNFs, \newline
@@ -162,10 +278,21 @@
 %\end{frame}
 
 \begin{frame}{Autarkies}
-An autarky for a clause-set $F$ is a partial assignment $\phi$ which satisfies every clause $C \in F$ it touches. \newline
+An autarky for a clause-set $F$ is a \textbf{partial assignment} $\varphi$ iff for every clause $C \in F$ either $\varphi$ does not ``touch" $C$, i.e., $var(\varphi) \cap var(C) = \emptyset$, \newline or $\varphi$ satisfies $C$, i.e., $\varphi \ast \{C\} = \top$.\newline
 
-%($var(\phi) \, \cap \, var(C)$ $\neq$ $\phi$)
-An autarky $\phi$ for $F$ is \textbf{trivial} if $var(\phi) \, \cap \, var(C)$ = $\phi$ \newline
+%
+%%($var(\phi) \, \cap \, var(C)$ $\neq$ $\phi$)
+%An autarky $\phi$ for $F$ is \textbf{trivial} if $var(\phi) \, \cap \, var(C)$ = $\phi$ \newline
+
+\end{frame}
+
+\begin{frame}{}
+The extreme cases:
+\begin{enumerate}
+	\item The empty partial assignment $\ev{}$ is an autarky for every F.
+	
+	\item A satisfying assignment for F is also an autarky for F. \newline
+\end{enumerate}
 
 A \textbf{lean} clause-set is a clause-set $F$ which has
 only the trivial autarky. \newline 
@@ -175,7 +302,7 @@ The class of all lean clause-sets is $lean$.
 \end{frame}
 
 
-\begin{frame}{Autarkies ...}
+\begin{frame}{Autarkies}
 
 Applications: 
 \begin{enumerate}
@@ -200,56 +327,64 @@ Applications:
 
 \begin{frame}{Basic Lemmas}
  \begin{lemma}[1]
-   $\Phi$ ∗ $F$ is satisfiability-equivalent to $F$ for an autarky $\Phi$ of $F$.
+   $\varphi$ $\ast$ $F$ is satisfiability-equivalent to $F$ for an autarky $\varphi$ of $F$.
  \end{lemma}
- 
+ \begin{proof}
+ 	($\leftarrow$) A satisfying assignment of F satisfies also
+ 	$\varphi \ast F$, since just clauses have been removed. 
+ 	
+ 	 ($\to$) If $\phi$ is a total satisfying assignment for $\varphi \ast F$, then $\varphi \cup \phi$ is a (partial) satisfying assignment for F.
+ \end{proof}
+\end{frame}
+
+\begin{frame}{Basic Lemmas}
   \begin{lemma}[2]
   The composition of two autarkies is again an autarky.
  \end{lemma}
  
   \begin{lemma}[3]
-   Given a DQCNF $F$, the largest lean sub-DQCNF $N_{a} (F)$ is also obtained by applying autarky-reduction to $F$ as long as possible.
+   Given a DQCNF $F$, the largest lean sub-DQCNF $N_{a} (F)$ is also \newline obtained by applying autarky-reduction to $F$ as long as possible.
  \end{lemma}
  
 \end{frame}
 
 
-\begin{frame}{Autarky systems}
+%\begin{frame}{Autarky systems}
+%
+%Allow restricted notions of autarkies. \newline
+%\begin{itemize}
+%    \item For a DQCNF $F$ we write $Auk(F)$ for the set of all autarkies.  
+%    \item An autarky system $A$ allows to consider subsets $A(F) \subseteq Auk(F)$.
+%\end{itemize}
+%
+%\vspace{0.5cm}
+%
+%Required conditions for an autarky system:
+%\begin{enumerate}
+%    \item DQCNF $F$ and $\phi$, $\psi \in A(F)$ it
+%must always hold $\phi \circ \psi \in A(F)$ (closure under composition).
+%
+%    \item DQCNF $F \subseteq F_0$ it must always hold $A(F_0) \subseteq A(F)$ (removal of clauses does not remove A-autarkies).
+%\end{enumerate}
+%
+%A-satisfiability means satisfiability by a series of A-
+%autarkies. \newline
+%
+%A-leanness means there there are no nontrivial A-autarkies.
+%\end{frame}
 
-Allow restricted notions of autarkies. \newline
-\begin{itemize}
-    \item For a DQCNF $F$ we write $Auk(F)$ for the set of all autarkies.  
-    \item An autarky system $A$ allows to consider subsets $A(F) \subseteq Auk(F)$.
-\end{itemize}
-
-\vspace{0.5cm}
-
-Required conditions for an autarky system:
-\begin{enumerate}
-    \item DQCNF $F$ and $\phi$, $\psi \in A(F)$ it
-must always hold $\phi \circ \psi \in A(F)$ (closure under composition).
-
-    \item DQCNF $F \subseteq F_0$ it must always hold $A(F_0) \subseteq A(F)$ (removal of clauses does not remove A-autarkies).
-\end{enumerate}
-
-A-satisfiability means satisfiability by a series of A-
-autarkies. \newline
-
-A-leanness means there there are no nontrivial A-autarkies.
-\end{frame}
-
-\begin{frame}{Additional concepts}
-
-Fundamental conditions on the Autarky system:
-
-\begin{enumerate}
-    \item standardised variables not actually occurring are irrelevant.
-    \item $\bot$-invariant universal clauses (only having universal variables) are irrelevant.
-    \item invariant under variable elimination removing (existential) variables from
-the clauses does not affect autarkies of A which do not use these variables.
-    \item invariant under renaming renaming variables (existential or universal) is respected by the autarky system.
-\end{enumerate}
-\end{frame}
+%\begin{frame}{Additional concepts}
+%
+%Fundamental conditions on the Autarky system:
+%
+%\begin{enumerate}
+%    \item standardised variables not actually occurring are irrelevant.
+%    \item $\bot$-invariant universal clauses (only having universal variables) are irrelevant.
+%    \item invariant under variable elimination removing (existential) variables from
+%the clauses does not affect autarkies of A which do not use these variables.
+%    \item invariant under renaming renaming variables (existential or universal) is respected by the autarky system.
+%\end{enumerate}
+%\end{frame}
 
 \begin{frame}{A- and E-systems}
 Consider a DQCNF $F$ and $k \geq 0$: \newline
@@ -269,25 +404,26 @@ Consider a DQCNF $F$ and $k \geq 0$: \newline
   \textbf{$A1$, $E1$, $A1 + E1$}.
 
 \end{frame}
-\begin{frame}{Autarky reduction}
- \begin{exampleblock}{Example}
-    {
-  $ F := (\{3,4\}, \{1,2\}, \{\{-1,2\},\{2,-3,-4\}\}, \{(1,\{3\}), (2,\{3,4\})\})$    
-    }
-    \end{exampleblock}
 
-\begin{exampleblock}{A DQDIMACS code is}
-    {
-p cnf 4 2 \\
-a 3 4 0 \\
-e 2 0 \\
-d 1 3 0 \\
--1 2 0 \\
-2 -3 -4 0 \\       
-    }
-    \end{exampleblock}
-    \vspace{0.2cm}
-\end{frame}
+%\begin{frame}{Autarky reduction}
+% \begin{exampleblock}{Example}
+%    {
+%  $ F := (\{3,4\}, \{1,2\}, \{\{-1,2\},\{2,-3,-4\}\}, \{(1,\{3\}), (2,\{3,4\})\})$    
+%    }
+%    \end{exampleblock}
+%
+%\begin{exampleblock}{A DQDIMACS code is}
+%    {
+%p cnf 4 2 \\
+%a 3 4 0 \\
+%e 2 0 \\
+%d 1 3 0 \\
+%-1 2 0 \\
+%2 -3 -4 0 \\       
+%    }
+%    \end{exampleblock}
+%    \vspace{0.2cm}
+%\end{frame}
 
 \begin{frame}{Translation to SAT: Finding A1 via compilation}
 \begin{enumerate}
@@ -298,29 +434,28 @@ d 1 3 0 \\
 
 \end{frame}
 
-\begin{frame}{Selected boolean functions}
-Translation \textbf{t} chooses for each $v \in E$ and $f \in s(v)$ a distinct new \textbf{bf-variable} \newline 
-  \textbf{t(v,f)} $\in$  \textbf{Va}   (``true'' iff $f$ is chosen for $v$)
-  
-\begin{equation}
-  \bigwedge_{f, f' \in s(v), f \ne f'} \overline{t(v,f)} \,\, \lor \,\, \overline{t(v,f')}.
- \end{equation}
- 
-\begin{exampleblock}{$s(v)$ all at-most-one-variable-bfs}
-e 2 0 \\
-d 1 3 0 \newline 
+%\begin{frame}{Selected boolean functions}
+%Translation \textbf{t} chooses for each $v \in E$ and $f \in s(v)$ a distinct new \textbf{bf-variable} \newline 
+%  \textbf{t(v,f)} $\in$  \textbf{Va}   (``true'' iff $f$ is chosen for $v$)
+%  
+%\begin{equation}
+%  \bigwedge_{f, f' \in s(v), f \ne f'} \overline{t(v,f)} \,\, \lor \,\, \overline{t(v,f')}.
+% \end{equation}
+% 
+%\begin{exampleblock}{$s(v)$ all at-most-one-variable-bfs}
+%e 2 0 \\
+%d 1 3 0 \newline 
+%
+% % $\abs{s(1)} = 4$ and $\abs{s(2)} = 6$; to list these $4+6 = 10$
+%    t(1,bf(0)), t(1,bf(1)), t(1,3), t(1,-3) \newline 
+%
+%    t(2,bf(0)), t(2,bf(1)), t(2,3), t(2,-3), t(2,4), t(2,-4)
+% 
+% \end{exampleblock}
+%\end{frame}
 
- % $\abs{s(1)} = 4$ and $\abs{s(2)} = 6$; to list these $4+6 = 10$
-    t(1,bf(0)), t(1,bf(1)), t(1,3), t(1,-3) \newline 
-
-    t(2,bf(0)), t(2,bf(1)), t(2,3), t(2,-3), t(2,4), t(2,-4)
- 
- \end{exampleblock}
-\end{frame}
-
-\begin{frame}{Admissible partial assignment}
+\begin{frame}{Minimal possibilities for $C$ to become a tautology}
     %For the minimal satisfying clause-assignments we have 
-    Types of minimal possibilities for $C$ to become a tautology
     \begin{enumerate}
         \item some existential $y \in C$ is set to 1;
         \item some existential $y \in C$ there is a universal $x \in C$ with $var(x) \in  D(var(y))$, and y is set to x;
@@ -337,40 +472,40 @@ $S(\{2,-3,-4\}) = \{ \ev{2 \to bf(1)}, \ev{2 \to 3}, \ev{2 \to 4} \}$
 \end{exampleblock}
 
 \end{frame}
-
-\begin{frame}{Frame Title}
-We choose distinct new pa-variables
-\[ t(\phi) \in VA 
-\]
-for $\phi \in \bigcup\limits_{C \in F} S(C)$ (`` true" iff $\phi$ is activated).
-
-\begin{equation}
-t(\phi) \iff t(v, \phi(v))
-\end{equation}
-\end{frame}
-
-
-\begin{frame}{Frame Title}
-We choose furthermore distinct new clause-selector-variables
-\[ t(C) \in VA \]
-(``true” if C is satisfied)
-
-for each $C \in F$ the clauses
-\begin{equation}
-    \overline{t(C)} \vee \bigvee_{\phi \in S(C)} t(\phi)
-\end{equation}
-
-\begin{equation}
-    \bigwedge_{v \in var(C) \cap E} \bigwedge_{f \in s(v)} t(C) \bigvee \overline{t(v,f)}
-\end{equation}
-\end{frame}
-
-\begin{frame}{Frame Title}
-    The existence of a non-trivial autarky 
-  \begin{equation}
-    \bigvee_{C \in F} t(C)
-  \end{equation}
-\end{frame}
+%
+%\begin{frame}{Frame Title}
+%We choose distinct new pa-variables
+%\[ t(\phi) \in VA 
+%\]
+%for $\phi \in \bigcup\limits_{C \in F} S(C)$ (`` true" iff $\phi$ is activated).
+%
+%\begin{equation}
+%t(\phi) \iff t(v, \phi(v))
+%\end{equation}
+%\end{frame}
+%
+%
+%\begin{frame}{Frame Title}
+%We choose furthermore distinct new clause-selector-variables
+%\[ t(C) \in VA \]
+%(``true” if C is satisfied)
+%
+%for each $C \in F$ the clauses
+%\begin{equation}
+%    \overline{t(C)} \vee \bigvee_{\phi \in S(C)} t(\phi)
+%\end{equation}
+%
+%\begin{equation}
+%    \bigwedge_{v \in var(C) \cap E} \bigwedge_{f \in s(v)} t(C) \bigvee \overline{t(v,f)}
+%\end{equation}
+%\end{frame}
+%
+%\begin{frame}{Frame Title}
+%    The existence of a non-trivial autarky 
+%  \begin{equation}
+%    \bigvee_{C \in F} t(C)
+%  \end{equation}
+%\end{frame}
 
 \begin{frame}{Results}
 334 instances in the DQBF track of QBFEVAL'18 
