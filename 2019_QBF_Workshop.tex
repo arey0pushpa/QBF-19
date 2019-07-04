@@ -154,7 +154,7 @@ Ans: Any function of dependency set variables.
 	}
 \end{alertblock}
 
-\begin{block}{Boolean functions}
+\begin{block}{Selected Boolean functions}
  \only<2> {
 $y_1 \to 0$, $ y_1 \to 1 \newline$
 $y_2 \to 0$, $ y_2 \to 1 \newline$
@@ -387,16 +387,16 @@ Applications:
 %\end{frame}
 
 \begin{frame}{A- and E-systems}
-Consider a DQCNF $F$ and $k \geq 0$: \newline
-\begin{enumerate}
-    \item An $Ak$- autarky for $F$ is an autarky such that all boolean functions assigned depend essentially on at most $k$ variables.
-    \item An $Ek$-autarky is an autarky assigns at most $k$ (existential) variables. 
-\end{enumerate}
+%Consider a DQCNF $F$ and $k \geq 0$: \newline
+%\begin{enumerate}
+%    \item An $Ak$- autarky for $F$ is an autarky such that all boolean functions assigned depend essentially on at most $k$ variables.
+%    \item An $Ek$-autarky is an autarky assigns at most $k$ (existential) variables. 
+%\end{enumerate}
 
 \vspace{0.4cm}
 
-  $A0$ and $A1$ allow the boolean functions to essentially \newline  
-  depend on 0 resp. 1 universal variable. \newline 
+  $A1$ allow the boolean functions to  
+  depend on 1 universal variable. \newline 
 
   $E1$ only uses one existential variable. \newline 
   
@@ -463,12 +463,10 @@ Consider a DQCNF $F$ and $k \geq 0$: \newline
     \end{enumerate}
 
 \begin{exampleblock}{The admissible autarkies}
--1 2 0 \\
-2 -3 -4 0 \newline 
 
-$S(\{-1,2 \}) = \{ \ev{1 \to bf(0)}, \ev{2 \to bf(1)}, \ev{1 \to \pm 3, 2 \to  \mp 3} \} $ \newline 
-
-$S(\{2,-3,-4\}) = \{ \ev{2 \to bf(1)}, \ev{2 \to 3}, \ev{2 \to 4} \}$
+$...\exists y_2(x_2,x_3) ... (\ov{y_2} \vee \ov{x_2} \vee x_3)$ \newline
+ 
+$S(\ov{y_2} \vee \ov{x_2} \vee x_3) = \{ \ev{y_2 \to 0}, \ev{y_2 \to \ov{x_2}}, \ev{y_2 \to x_3} \} $ 
 \end{exampleblock}
 
 \end{frame}
