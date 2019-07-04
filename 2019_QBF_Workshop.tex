@@ -26,6 +26,9 @@
 \newcommand{\ov}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 
 
+\usepackage{graphicx}
+\usepackage{subcaption}
+
 \usepackage{xcolor}% http://ctan.org/pkg/xcol
 \definecolor{OliveGreen}{rgb}{0.2,0.7,0.2}
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
@@ -280,10 +283,22 @@ $y_3 \to 0$, $ y_3 \to 1$
 \begin{frame}{Autarkies}
 An autarky for a clause-set $F$ is a \textbf{partial assignment} $\varphi$ iff for every clause $C \in F$ either $\varphi$ does not ``touch" $C$, i.e., $var(\varphi) \cap var(C) = \emptyset$, \newline or $\varphi$ satisfies $C$, i.e., $\varphi \ast \{C\} = \top$.\newline
 
+\begin{figure}[h!]
+	\centering
+%	\begin{subfigure}[b]{0.4\linewidth}
+	%	\includegraphics[width=\linewidth]{zw}
+%		\caption{Coffee.}
+%	\end{subfigure}
+%	\begin{subfigure}[b]{0.4\linewidth}
+%		\includegraphics[width=\linewidth]{coffee.jpg}
+%		\caption{More coffee.}
+%	\end{subfigure}
+%	\caption{The same cup of coffee. Two times.}
+	\label{fig:coffee}
+\end{figure}
 %
 %%($var(\phi) \, \cap \, var(C)$ $\neq$ $\phi$)
 %An autarky $\phi$ for $F$ is \textbf{trivial} if $var(\phi) \, \cap \, var(C)$ = $\phi$ \newline
-
 \end{frame}
 
 \begin{frame}{}
