@@ -280,11 +280,22 @@ $y_3 \to 0$, $ y_3 \to 1$
 % 
 %\end{frame}
 
-\begin{frame}{Autarkies}
-An autarky for a clause-set $F$ is a \textbf{partial assignment} $\varphi$ iff for every clause $C \in F$ either $\varphi$ does not ``touch" $C$, i.e., $var(\varphi) \cap var(C) = \emptyset$, \newline or $\varphi$ satisfies $C$, i.e., $\varphi \ast \{C\} = \top$.\newline
+\begin{frame}{Autarkies for DQCNF}
+Autarkies for SAT \newline 
 
-\begin{figure}[h!]
-	\centering
+\textit{An autarky for a clause-set $F$ is a \textbf{partial assignment} $\varphi$ iff for every clause $C \in F$ either $\varphi$ does not ``touch" $C$, i.e., $var(\varphi) \cap var(C) = \emptyset$, \newline or $\varphi$ satisfies $C$, i.e., $\varphi \ast \{C\} = \top$.\newline
+}
+\pause 
+
+\begin{itemize}
+	\item $\varphi$: 
+%	maps each existentially quantified variable of F to a Boolean function,	
+	assign existential variables v of F, with values now being \newline \textbf{boolean functions} as allowed by the dependency-set.
+	\item Making a clause ``true" now means making it a tautology.
+\end{itemize}
+
+%\begin{figure}[h!]
+%	\centering
 %	\begin{subfigure}[b]{0.4\linewidth}
 	%	\includegraphics[width=\linewidth]{zw}
 %		\caption{Coffee.}
@@ -294,17 +305,17 @@ An autarky for a clause-set $F$ is a \textbf{partial assignment} $\varphi$ iff f
 %		\caption{More coffee.}
 %	\end{subfigure}
 %	\caption{The same cup of coffee. Two times.}
-	\label{fig:coffee}
-\end{figure}
+%	\label{fig:coffee}
+%\end{figure}
 %
 %%($var(\phi) \, \cap \, var(C)$ $\neq$ $\phi$)
 %An autarky $\phi$ for $F$ is \textbf{trivial} if $var(\phi) \, \cap \, var(C)$ = $\phi$ \newline
 \end{frame}
 
-\begin{frame}{}
-The extreme cases:
+\begin{frame}{The extreme cases}
+
 \begin{enumerate}
-	\item The empty partial assignment $\ev{}$ is an autarky for every F.
+	\item The empty partial assignment $\ev{}$ is an autarky for every F \newline (trivial autarky)
 	
 	\item A satisfying assignment for F is also an autarky for F. \newline
 \end{enumerate}
@@ -353,6 +364,8 @@ Applications:
 \end{frame}
 
 \begin{frame}{Basic Lemmas}
+ Autarky reduction is confluent  
+
   \begin{lemma}[2]
   The composition of two autarkies is again an autarky.
  \end{lemma}
@@ -360,6 +373,7 @@ Applications:
   \begin{lemma}[3]
    Given a DQCNF $F$, the largest lean sub-DQCNF $N_{a} (F)$ is also \newline obtained by applying autarky-reduction to $F$ as long as possible.
  \end{lemma}
+\vspace{0.5cm}
  
 \end{frame}
 
@@ -410,13 +424,63 @@ Applications:
 
 \vspace{0.4cm}
 
-  $A1$ allow the boolean functions to  
-  depend on 1 universal variable. \newline 
+$A1$ allow the boolean functions to  
+depend on 1 universal variable. \newline 
 
-  $E1$ only uses one existential variable. \newline 
-  
-  We have considered three Autarky Systems \newline 
-  \textbf{$A1$, $E1$, $A1 + E1$}.
+$E1$ only uses one existential variable. \newline 
+
+We have considered three Autarky Systems \newline 
+\textbf{$A1$, $E1$, $A1 + E1$}.
+
+\end{frame}
+
+\begin{frame}{A- and E-systems}
+%Consider a DQCNF $F$ and $k \geq 0$: \newline
+%\begin{enumerate}
+%    \item An $Ak$- autarky for $F$ is an autarky such that all boolean functions assigned depend essentially on at most $k$ variables.
+%    \item An $Ek$-autarky is an autarky assigns at most $k$ (existential) variables. 
+%\end{enumerate}
+
+\vspace{0.2cm}
+\only
+ $A1$ allow the boolean functions to  
+	depend on 1 universal variable. 
+	
+	\begin{alertblock}{1. DQCNF formula:}
+		{		
+		F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+			\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+		}
+	\end{alertblock}
+    
+    \begin{example}
+    	Exactly one A1-autarky \newline 
+    	 $a \to \neg x \newline$ 
+    	 $b \to \neg y \newline$
+    	 F is E1-lean.
+    	 
+    \end{example}
+\end{frame}
+    
+\begin{frame}{A- and E-systems}
+$E1$ only uses one existential variable. 
+\begin{alertblock}{1. DQCNF formula:}
+	{		
+		$F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
+		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+	}
+\end{alertblock}
+
+ \begin{example}
+	Exactly one E1-autarky \newline 
+	$c \to (x \lor \neg y) \land (\neg x \lor y)$
+	
+	It's A1-lean.
+	
+\end{example} 
 
 \end{frame}
 
@@ -442,7 +506,7 @@ Applications:
 
 \begin{frame}{Translation to SAT: Finding A1 via compilation}
 \begin{enumerate}
-    \item \textbf{Selected (boolean) functions}: restrict to some “interesting” selection \textbf{s(v)} $\subseteq$ $BF^{D^v}$ , and treat the elements of s(v) as the possible values of v. \newline 
+    \item \textbf{Selected (boolean) functions}: restrict to some “interesting” selection \textbf{s(v)} $\subseteq$ $BF^{D^v}$, and treat the elements of s(v) as the possible values of v. \newline 
     
     \item \textbf{Admissible partial assignment:} For each $C \in F$ , compile all possibilities for admissible partial satisfying assignments for C into some CNF-representation \textbf{P(C)}.
 \end{enumerate}
@@ -470,7 +534,7 @@ Applications:
 %\end{frame}
 
 \begin{frame}{Minimal possibilities for $C$ to become a tautology}
-    %For the minimal satisfying clause-assignments we have 
+%Compile for each clause the minimal possibilities to make it a tautology.
     \begin{enumerate}
         \item some existential $y \in C$ is set to 1;
         \item some existential $y \in C$ there is a universal $x \in C$ with $var(x) \in  D(var(y))$, and y is set to x;
@@ -558,7 +622,8 @@ and clauses (while adding E1 does not change this).
 %%QESTO 109 86 23 761K
 %%DynQBF 72 38 34 826K
 %%QSTS 152 116 36 687K   
-%  \end{tabular}}
+%  \end{tabular}
+%}
 % \caption{Original Instances (time include timeouts).}
 %  \label{tab:qf-grabh}
 %\end{table}
