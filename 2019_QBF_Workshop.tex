@@ -394,19 +394,19 @@ Autarkies for SAT \newline
 	\item A satisfying assignment for F is also an autarky for F. \newline
 \end{enumerate}
 
-A \textbf{lean} clause-set is a clause-set $F$ which has
-only the trivial autarky. \newline 
+%A \textbf{lean} clause-set is a clause-set $F$ which has
+%only the trivial autarky. \newline 
 
-The class of all lean clause-sets is $lean$.
+%The class of all lean clause-sets is $lean$.
 
 \end{frame}
 
 
-\begin{frame}{Autarkies}
+\begin{frame}{Autarkies use and challenges}
 
 Applications: 
 \begin{enumerate}
-    \item Study of Unsatisfiability
+    \item Study of minimal unsatisfiability
     \item Pre-processing 
     \item Inprocessing
 \end{enumerate}
@@ -425,9 +425,10 @@ Applications:
 
 \end{frame}
 
-\begin{frame}{Basic Lemmas}
- \begin{lemma}[1]
-   $\varphi$ $\ast$ $F$ is satisfiability-equivalent to $F$ for an autarky $\varphi$ of $F$.
+\begin{frame}{The basic lemmas}
+For an autarky $\varphi$ of $F$
+ \begin{lemma}[]
+   $\varphi$ $\ast$ $F$ is satisfiability-equivalent to $F$.
  \end{lemma}
  \begin{proof}
  	($\leftarrow$) A satisfying assignment of F satisfies also
@@ -440,12 +441,12 @@ Applications:
 \begin{frame}{Basic Lemmas}
  Autarky reduction is confluent  
 
-  \begin{lemma}[2]
+  \begin{lemma}[]
   The composition of two autarkies is again an autarky.
  \end{lemma}
  
-  \begin{lemma}[3]
-   Given a DQCNF $F$, the largest lean sub-DQCNF $N_{a} (F)$ is also \newline obtained by applying autarky-reduction to $F$ as long as possible.
+  \begin{lemma}[]
+   Given a DQCNF $F$, the largest lean sub-DQCNF is also obtained \newline  by applying autarky-reduction to $F$ as long as possible.
  \end{lemma}
 \vspace{0.5cm}
  
@@ -499,15 +500,15 @@ Applications:
 \vspace{0.4cm}
 
 We have considered three Autarky Systems \newline 
-\textbf{$A1$, $E1$, $A1 + E1$}. \newline
+\textbf{$A_1$, $E_1$, $A_1 + E_1$}. \newline
 
 \begin{enumerate}
-	\item $A1$ allow the boolean functions to  
+	\item $A_1$ allow the boolean functions to  
 	depend on 1 universal variable.
 	
-	\item $E1$ only uses one existential variable.
+	\item $E_1$ only uses one existential variable.
 	
-	\item $A1 + E1$, combination of $A1$ and $E1$-autarky system.
+	\item $A_1 + E_1$, combination of $A_1$ and $E_1$-autarky system.
 \end{enumerate}
 
 \end{frame}
@@ -521,10 +522,10 @@ We have considered three Autarky Systems \newline
 
 \vspace{0.2cm}
 \only
- $A1$ allow the boolean functions to  
+ $A_1$ allow the boolean functions to  
 	depend on 1 universal variable. 
 	
-	\begin{alertblock}{1. DQCNF formula:}
+	\begin{alertblock}{DQCNF formula:}
 		{		
 		F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
 			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
@@ -534,17 +535,17 @@ We have considered three Autarky Systems \newline
 	\end{alertblock}
     
     \begin{example}
-    	Exactly one A1-autarky \newline 
+    	Exactly one $A_1$-autarky \newline 
     	 $a \to \neg x \newline$ 
     	 $b \to \neg y \newline$
-    	 F is E1-lean.
+    	 $F$ is $E_1$-lean.
     	 
     \end{example}
 \end{frame}
     
 \begin{frame}{A- and E-systems}
-$E1$ only uses one existential variable. 
-\begin{alertblock}{1. DQCNF formula:}
+$E_1$ only uses one existential variable. 
+\begin{alertblock}{DQCNF formula:}
 	{		
 		$F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
 		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
@@ -553,10 +554,10 @@ $E1$ only uses one existential variable.
 \end{alertblock}
 
  \begin{example}
-	Exactly one E1-autarky \newline 
+	Exactly one $E_1$-autarky \newline 
 	$c \to (x \lor \neg y) \land (\neg x \lor y)$
 	
-	$F'$ A1-lean.
+	$F'$ $A_1$-lean.
 	
 \end{example} 
 
@@ -582,11 +583,11 @@ $E1$ only uses one existential variable.
 %    \vspace{0.2cm}
 %\end{frame}
 
-\begin{frame}{Translation to SAT: Finding A1 via compilation}
+\begin{frame}{Translation to SAT: Finding $A_1$ via compilation}
 \begin{enumerate}
-    \item \textbf{Selected (boolean) functions}: restrict to some “interesting” selection \textbf{s(v)} $\subseteq$ $BF^{D^v}$, and treat the elements of s(v) as the possible values of v. \newline 
+    \item \textbf{Selected (boolean) functions}: restrict to some ``interesting" selection \textbf{s(v)} $\subseteq$ boolean function, and treat the elements of s(v) as the possible values of v. \newline 
     
-    \item \textbf{Admissible partial assignment:} For each $C \in F$ , compile all possibilities for admissible partial satisfying assignments for C into some CNF-representation \textbf{P(C)}.
+    \item \textbf{Admissible partial assignment:} For each $C \in F$ , \textbf{compile} all possibilities for admissible partial satisfying assignments for C into some CNF-representation \textbf{P(C)}.
 \end{enumerate}
 
 \end{frame}
@@ -662,16 +663,16 @@ $S(\ov{y_2} \vee \ov{x_2} \vee x_3) = \{ \ev{y_2 \to 0}, \ev{y_2 \to \ov{x_2}}, 
 %  \end{equation}
 %\end{frame}
 
-\begin{frame}{Results}
+\begin{frame}{Numbers}
 334 instances in the DQBF track of QBFEVAL'18 
 
 \begin{itemize}
-    \item 330 instances are E1+A1-lean (have no non-trivial E1- or A1-autarky). 
-    \item From the remaining 4 instances, all are E1-lean, one is A1-satisfiable, 
-    \item one is E1+A1-satisfiable, 
-    \item the remaining two instances are not E1+A1-satisfiable,
-    \item but allow A1-autarkies eliminating in both cases around 80 of variables
-and clauses (while adding E1 does not change this).
+    \item 330 instances are $E_1$+$A_1$-lean (have no non-trivial $E_1$- or $A_1$-autarky). 
+    \item From the remaining 4 instances, all are $E_1$-lean, one is $A_1$-satisfiable, 
+    \item one is $E_1 + A_1$-satisfiable, 
+    \item the remaining two instances are not $E_1 + A_1$-satisfiable,
+    \item but allow $A_1$-autarkies eliminating in both cases around 80 of variables
+and clauses (while adding $E_1$ does not change this).
 \end{itemize}
 
 \end{frame}
@@ -710,7 +711,7 @@ and clauses (while adding E1 does not change this).
 \begin{frame}{Conclusion}
 \begin{itemize}
 \item Autarky theory for DQBF.
-\item Three Autarky systems A1, E1, A1+E1
+\item Three Autarky systems $A_1$, $E_1$,$E_1 + A_1$
 \item A SAT translation 
 \end{itemize}
 \vspace{1cm}
