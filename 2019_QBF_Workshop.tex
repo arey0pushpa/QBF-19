@@ -16,6 +16,10 @@
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 \DeclarePairedDelimiter\ev{\langle}{\rangle}%
+%\usepackage[dvipsnames]{xcolor}
+\usepackage[]{ulem}
+\usepackage{cancel}
+\usepackage{soul}
 
 
 \usepackage{array}
@@ -65,19 +69,19 @@
   \titlepage
 \end{frame}
 
-\begin{frame}{TODO}
- Later then one defines "autarkies" in general,
- 
- and E1,A1 etc.
- 
- Plus the main lemma, 
- 
- the SAT-equivalence, 
- 
- and explaining "autarky systems" and 
- 
- confluence.
-\end{frame}
+%\begin{frame}{TODO}
+% Later then one defines "autarkies" in general,
+% 
+% and E1,A1 etc.
+% 
+% Plus the main lemma, 
+% 
+% the SAT-equivalence, 
+% 
+% and explaining "autarky systems" and 
+% 
+% confluence.
+%\end{frame}
 
 %\begin{frame}{DQCNF}
 %Dependency Quantified Boolean Formulas (DQBF) extend QBF \\
@@ -112,16 +116,16 @@
 %  
 %\end{frame}
 
-\begin{frame}{Solve DQBF: SAT or UNSAT?}
+\begin{frame}{Solve DQCNF: SAT or UNSAT?}
 
 %\vspace{0.2cm}
 
-\begin{alertblock}{1. DQCNF formula:}
-	{
-		$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_2(x_2,x_3) \, \exists y_3(x_1) : \newline$
-		$(y_{1} \vee x_1) \, \wedge \, (\ov{y_1} \vee x_2)  \newline$ 
-		$ \, \wedge \, (\ov{y_2} \vee \ov{x_2} \vee x_3)  \newline \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1)$
-		\vspace{0.2cm}
+	\begin{alertblock}{DQCNF formula:}
+	{		
+		F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 	}
 \end{alertblock}
 \pause
@@ -131,84 +135,105 @@ Rules of the Game: \\
 \begin{itemize}
 	\pause
 	
-	\item Substitute functions in place of existential variables.
+	\item Substitute boolean functions in place of existential variables.
 	\pause
 	
-	\item Clauses are satisfied.
+	\item The corresponding clauses becomes tautology.
 \end{itemize}
 \pause
  
 \textbf{Ques.} What are allowed values? \\
 \pause
 
-Ans: Any function of dependency set variables.
+Ans: Any boolean function of dependency set variables.
 \end{frame}
 
 \begin{frame}{Solve DQBF: SAT or UNSAT?}
 
 %\vspace{0.2cm}
 
-\begin{alertblock}{1. DQCNF formula:}
-	{
-		$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_2(x_2,x_3) \, \exists y_3(x_1) : \newline$
-		$(y_{1} \vee x_1) \, \wedge \, (\ov{y_1} \vee x_2)  \newline$ 
-		$ \, \wedge \, (\ov{y_2} \vee \ov{x_2} \vee x_3)  \newline \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1)$
-		\vspace{0.2cm}
+	\begin{alertblock}{DQCNF formula:}
+	{		
+		F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 	}
 \end{alertblock}
 
-\begin{block}{Selected Boolean functions}
- \only<2> {
-$y_1 \to 0$, $ y_1 \to 1 \newline$
-$y_2 \to 0$, $ y_2 \to 1 \newline$
-$y_3 \to 0$, $ y_3 \to 1$
-}
- \only<3> {
-	$y_1 \to 0$, $ y_1 \to 1 \newline$
-	$y_2 \to 0$, $ y_2 \to 1 \newline$
-	$y_3 \to 0$, $ y_3 \to 1$, $y_3 \to x_1$, $ y_3 \to \ov{x_1}$ 
-}
-
-\only<4> {
-	$y_1 \to 0$, $ y_1 \to 1$, $y_1 \to x_1$, $ y_1 \to \ov{x_1}$, $y_1 \to x_2$, $ y_3 \to \ov{x_2} \newline$
-	$y_2 \to 0$, $ y_2 \to 1 \newline$
-	$y_3 \to 0$, $ y_3 \to 1$, $y_3 \to x_1$, $ y_3 \to \ov{x_1}$ 
-}
-
-\only<5> {
-	$y_1 \to 0$, $ y_1 \to 1$, $y_1 \to x_1$, $ y_1 \to \ov{x_1}$, $y_1 \to x_2$, $ y_1 \to \ov{x_2} \newline$
-	$y_2 \to 0$, $ y_2 \to 1, y_2 \to x_2$, $ y_2 \to \ov{x_2}$, $y_2 \to x_3$, $ y_2 \to \ov{x_3} \newline$
-	$y_3 \to 0$, $ y_3 \to 1$, $y_3 \to x_1$, $ y_3 \to \ov{x_1}$ 
-}
-\end{block}
+%\begin{block}{Selected boolean functions}
+% \only<2> {
+%$a \to 0$, $ a \to 1 \newline$
+%$b \to 0$, $ b \to 1 \newline$
+%$c \to 0$, $ c \to 1 \newline$
+%$d \to 0$, $ d \to 1 \newline$
+%$e \to 0$, $ e \to 1 \newline$
+%}
+% \only<3> {
+%$a \to 0$, $ a \to 1, a \to x, a \to \neg x \newline$
+%$b \to 0$, $ b \to 1 \newline$
+%$c \to 0$, $ c \to 1 \newline$
+%$d \to 0$, $ d \to 1 \newline$
+%$e \to 0$, $ e \to 1 \newline$
+%}
+%
+%\only<4> {
+%	$y_1 \to 0$, $ y_1 \to 1$, $y_1 \to x_1$, $ y_1 \to \ov{x_1}$, $y_1 \to x_2$, $ y_3 \to \ov{x_2} \newline$
+%	$y_2 \to 0$, $ y_2 \to 1 \newline$
+%	$y_3 \to 0$, $ y_3 \to 1$, $y_3 \to x_1$, $ y_3 \to \ov{x_1}$ 
+%}
+%
+%\only<5> {
+%	$y_1 \to 0$, $ y_1 \to 1$, $y_1 \to x_1$, $ y_1 \to \ov{x_1}$, $y_1 \to x_2$, $ y_1 \to \ov{x_2} \newline$
+%	$y_2 \to 0$, $ y_2 \to 1, y_2 \to x_2$, $ y_2 \to \ov{x_2}$, $y_2 \to x_3$, $ y_2 \to \ov{x_3} \newline$
+%	$y_3 \to 0$, $ y_3 \to 1$, $y_3 \to x_1$, $ y_3 \to \ov{x_1}$ 
+%}
+%\end{block}
 
 \end{frame}
 
 
-\begin{frame}{}
-\begin{alertblock}{DQCNF formula:}
-	{
-		$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_2(x_2,x_3) \, \exists y_3(x_1) : \newline$
-		$(y_{1} \vee x_1) \, \wedge \, (\ov{y_1} \vee x_2)  \newline$ 
-		$ \, \wedge \, (\ov{y_2} \vee \ov{x_2} \vee x_3)  \newline \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1)$
-		\vspace{0.2cm}
-	}
+\begin{frame}{Solving DQCNF Piece-wise}
+\begin{alertblock}{DQCNF formula:} {
+\only<1>	{	
+F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+}
+\only<2->{
+F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+}
+}
 \end{alertblock}
-\begin{exampleblock}{Solve the DCNF}
-	{   \only Three choices $y_1, y_2, y_3$ ...
-		\pause 
+
+\begin{exampleblock}{Solve the DQCNF}
+	{   \only Total five choices $a, b, c, d, e$ ...
+		\pause \pause
 		\begin{enumerate}
 		%	\pause
-		\only \item Pick $y_2$\\
+		\only \item Pick $a, b$\\
 		\pause 
-		  $\overline{y_2}$ is pure, $y_2 \rightarrow 0$ \newline 
+		  $a \to \neg x$ and $b \to \neg y$ \newline 
 		\pause 
-		$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_3(x_1)  : (y_1 \vee x_1) \wedge (\overline{y_1} \vee x_2)
-		\, \wedge \, (1 \vee \ov{x_2} \vee x_3)  \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1) \newline$ \\ 
-        \pause 
-        $\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_3(x_1)  : (y_1 \vee x_1) \wedge (\overline{y_1} \vee x_2)
-        \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1)$ \\ 
-	    (removing the third clause).
+
+\only<5>{ $F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
+	\textcolor{blue}{\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}}  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $ }  
+    %    \pause 
+    
+    \only<6>{ $F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
+    	\textcolor{blue}{ \cancel{\{\ov{x},b,x\}}, \cancel{\{x,\ov{b},\ov{x}\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}}  \newline 
+    	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+    	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $} 
+
+\only<7>{ $F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $} 
 		%	Both these autarkies are also $Eaut_1$-autarkies.
 		\end{enumerate}
 	}
@@ -217,42 +242,49 @@ $y_3 \to 0$, $ y_3 \to 1$
 %\textbf{lean kernel} of the original formula.
 \end{frame}
 
-
-\begin{frame}{}
-\begin{alertblock}{DQCNF formula:}
-	{
-		$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2) \, \exists y_2(x_2,x_3) \, \exists y_3(x_1) : \newline$
-		$(y_{1} \vee x_1) \, \wedge \, (\ov{y_1} \vee x_2)  \newline$ 
-		$ \, \wedge \, (\ov{y_2} \vee \ov{x_2} \vee x_3)  \newline \, \wedge \, (y_3 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{y_3} \vee x_1)$
-		\vspace{0.2cm}
+\begin{frame}{Solving DQCNF}
+\begin{alertblock}{DQCNF formula:} {
+		\only<1>	{	
+			$F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
+			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+			\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+		}
+		\only<2->{
+		$F'$ :=	$ \forall x, y \, \exists d(x) \, \exists e(y) : \newline 
+	\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} \newline 
+		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+		}
 	}
 \end{alertblock}
-\begin{exampleblock}{Solve the DCNF}
-	{ \begin{itemize}
-		\item Pick $y_3$: $y_3 \rightarrow x_1$  \\
-			\pause
-			
+
+\begin{exampleblock}{Solve the DQCNF}
+	{   \pause \pause 
+		\begin{enumerate}
+			%	\pause
+			\only \item Pick $c$\\
 			\pause 
-			$\forall x_1,x_2,x_3 \, \exists y_1(x_1,x_2)  : (y_1 \vee x_1) \wedge (\overline{y_1} \vee x_2)
-			\, \wedge \, (x_1 \vee \ov{x_1} \vee x_2) \, \wedge \, (\ov{x_1} \vee x_1) \newline$ \\ 
+			$c = (x \lor \neg y) \land (\neg x \lor  y)$ \newline 
 			\pause 
-			$\forall x_1,x_2,x_3 \exists y_1(x_1,x_2) : (y_1 \vee x_1) \wedge (\overline{y_1} \vee x_2)$
 			
-			removing the fourth and fifth clauses.	
+			\only<5>{ $F'$ :=	$ \forall x, y \, \exists d(x) \, \exists e(y) : \newline 
+				\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} \newline 
+				\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $ }  
+			%    \pause 
+			
+			\only<6>{ $F'$ :=	$ \forall x, y \, \exists d(x) \, \exists e(y) : \newline 
+				\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} \newline 
+				\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $} 
+			
+			\only<7>{ $F'$ :=	$ \forall x, y \, \exists d(x) \, \exists e(y) : \newline 
+				\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} \newline 
+				\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $} 
 			%	Both these autarkies are also $Eaut_1$-autarkies.
-		\end{itemize}
+		\end{enumerate}
 	}
 \end{exampleblock}
-\pause
-\begin{alertblock}{Reduced DQCNF formula:}
-	{
-			$\forall x_1,x_2,x_3 \exists y_1(x_1,x_2) : (y_1 \vee x_1) \wedge (\overline{y_1} \vee x_2)$
-	}
-\end{alertblock}
 
-%\textbf{A1 Autarky lean kernel} of the original formula.
+%\textbf{lean kernel} of the original formula.
 \end{frame}
-
 
 %\begin{frame}{Autarkies for DQBF}
 %``Autarkies" are some form of redundancies in CNFs, \newline
