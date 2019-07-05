@@ -203,9 +203,9 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 }
 \only<2->{
 F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
+    \{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+		\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
 }
 }
 \end{alertblock}
@@ -215,25 +215,26 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 		\pause \pause
 		\begin{enumerate}
 		%	\pause
-		\only \item Pick $a, b$\\
+		\only \item Pick $d, e$\\
 		\pause 
-		  $a \to \neg x$ and $b \to \neg y$ \newline 
+		  $d \to \neg x$ and $e \to \neg y$ \newline 
 		\pause 
 
-\only<5>{ $F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
-	\textcolor{blue}{\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}}  \newline 
+\only<5>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $ }  
+\textcolor{blue}{	\{\ov{x},e,x\}, \{x,\ov{e},\ov{x}, c\} \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}} $ }  
     %    \pause 
     
-    \only<6>{ $F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
-    	\textcolor{blue}{ \cancel{\{\ov{x},b,x\}}, \cancel{\{x,\ov{b},\ov{x}\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}}  \newline 
-    	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-    	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $} 
+   \only<6>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+   	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
+   	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+   	\textcolor{blue}{	\cancel{\{\ov{x},e,x\}}, \cancel{\{x,\ov{e},\ov{x}, c\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}} $ }  
+   %    \pause 
 
-\only<7>{ $F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $} 
+\only<7>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline $ }   
 		%	Both these autarkies are also $Eaut_1$-autarkies.
 		\end{enumerate}
 	}
@@ -245,14 +246,14 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 \begin{frame}{Solving DQCNF}
 \begin{alertblock}{DQCNF formula:} {
 		\only<1>	{	
-			$F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
-			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-			\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+			$F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} $
 		}
 		\only<2->{
-		$F'$ :=	$ \forall x, y \, \exists d(x) \, \exists e(y) : \newline 
-	\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} \newline 
-		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+		$F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \,\exists c(x,y) : \newline 
+			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+	\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} $
 		}
 	}
 \end{alertblock}
@@ -266,19 +267,60 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 			$c = (x \lor \neg y) \land (\neg x \lor  y)$ \newline 
 			\pause 
 			
-			\only<5>{ $F'$ :=	$ \forall x, y \, \exists d(x) \, \exists e(y) : \newline 
-				\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} \newline 
-				\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $ }  
+			\only<5>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+					\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+				\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
 			%    \pause 
 			
-			\only<6>{ $F'$ :=	$ \forall x, y \, \exists d(x) \, \exists e(y) : \newline 
-				\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} \newline 
-				\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $} 
+			\only<6>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+			\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
+		%    \pause  
 			
-			\only<7>{ $F'$ :=	$ \forall x, y \, \exists d(x) \, \exists e(y) : \newline 
-				\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} \newline 
-				\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $} 
-			%	Both these autarkies are also $Eaut_1$-autarkies.
+			\only<7>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+			\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
+		%    \pause 
+		\end{enumerate}
+	}
+\end{exampleblock}
+
+%\textbf{lean kernel} of the original formula.
+\end{frame}
+
+\begin{frame}{Solving DQCNF}
+\begin{alertblock}{DQCNF formula:} {
+		\only<1>	{	
+			$F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) : \newline 
+			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\} $
+		}
+		\only<2->{
+				$F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) : \newline 
+		\textcolor{blue}{	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\} }$
+		}
+	}
+\end{alertblock}
+
+\begin{exampleblock}{Solve the DQCNF}
+	{   \pause \pause 
+		\begin{enumerate}
+			%	\pause
+			\only \item Pick $a, b$\\
+			\pause 
+			$a = \neg x, b = \neg y$ \newline 
+			\pause 
+			
+			\only<5>{ $F'''$ :=	 $
+			\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x, y,\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}}  \newline 
+				 $ }  
+			%    \pause 
+			
+			\only<6>{ $F'''$ :=	$\textcolor{blue}{	\cancel{\{\ov{x}, \ov{y},x\}}, \cancel{\{x, y,\ov{x}\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}}  \newline 
+				$  }
+			%    \pause  
+			
+			\only<7>{ $F'''$ :=	$\{\} $ }  
+			%    \pause 
 		\end{enumerate}
 	}
 \end{exampleblock}
