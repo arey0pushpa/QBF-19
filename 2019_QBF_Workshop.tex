@@ -319,12 +319,19 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 				$  }
 			%    \pause  
 			
-			\only<7>{ $F'''$ :=	$\top $ }  
+			\only<7->{ $F'''$ :=	$\top $ }  
 			%    \pause 
 		\end{enumerate}
 	}
+
+
 \end{exampleblock}
 
+\only<8>{
+	\begin{alertblock}{Total satisfying assignment} {
+			$ a \to \neg x, \, b \to \neg y, \, c \to (x=y), \, d \to \neg x, \, e \to \neg y$
+		}
+\end{alertblock} }
 %\textbf{lean kernel} of the original formula.
 \end{frame}
 
@@ -389,7 +396,7 @@ Autarkies for SAT \newline
 \begin{frame}{The extreme cases}
 
 \begin{enumerate}
-	\item The empty partial assignment $\ev{}$ is an autarky for every F \newline (trivial autarky)
+	\item The empty partial assignment is an autarky for every F \newline (trivial autarky)
 	
 	\item A satisfying assignment for F is also an autarky for F. \newline
 \end{enumerate}
@@ -414,7 +421,7 @@ Applications:
  \begin{exampleblock}{Challenge}
  Finding an autarky for DQCNF is as hard as finding a satisfying assignment.
 \end{exampleblock}
-    
+    \pause 
   \begin{alertblock}{Our solution: Autarky Systems}
   \begin{itemize}
       \item restricting the range of autarkies to a more feasible domain
@@ -430,6 +437,7 @@ For an autarky $\varphi$ of $F$
  \begin{lemma}[]
    $\varphi$ $\ast$ $F$ is satisfiability-equivalent to $F$.
  \end{lemma}
+\pause
  \begin{proof}
  	($\leftarrow$) A satisfying assignment of F satisfies also
  	$\varphi \ast F$, since just clauses have been removed. 
@@ -440,11 +448,11 @@ For an autarky $\varphi$ of $F$
 
 \begin{frame}{Basic Lemmas}
  Autarky reduction is confluent  
-
+ \pause 
   \begin{lemma}[]
   The composition of two autarkies is again an autarky.
  \end{lemma}
- 
+  \pause 
   \begin{lemma}[]
    Given a DQCNF $F$, the largest lean sub-DQCNF is also obtained \newline  by applying autarky-reduction to $F$ as long as possible.
  \end{lemma}
@@ -714,9 +722,15 @@ and clauses (while adding $E_1$ does not change this).
 \item Three Autarky systems $A_1$, $E_1$,$E_1 + A_1$
 \item A SAT translation 
 \end{itemize}
-\vspace{1cm}
+\vspace{0.5cm}
+\textbf{Future Work: \newline}
+\begin{itemize}
+	\item Run on the complete 11600 instance of QBFEVAL.
+	\item Consider more stronger autarky systems.
+\end{itemize}
+\vspace{0.5cm}
 \Large
-Dankeschön!
+Thanks!
 \end{frame}
 
 \end{document}
