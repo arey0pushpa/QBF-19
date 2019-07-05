@@ -59,7 +59,7 @@
 % Formatting for title page
 \title[QBF]{Autarkies for DQCNF}
 \author{Oliver Kullmann \inst{1} \and \textbf{Ankit Shukla} \inst{2}}
-\institute{\inst{1} Swansea university \inst{2} JKU, Austria}
+\institute{\inst{1} Swansea University \inst{2} JKU, Linz}
 %{\large International Workshop on QBFs and Beyond}
 %\date{10 September 18}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,45 +120,65 @@
 
 %\vspace{0.2cm}
 
-	\begin{alertblock}{DQCNF formula:}
+	\begin{alertblock}{DQCNF formula}
 	{		
 		F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
 		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 	}
 \end{alertblock}
 \pause
 
-Rules of the Game: \\
+Rules of the game \\
 
 \begin{itemize}
 	\pause
 	
-	\item Substitute boolean functions in place of existential variables.
+	\item Substitute boolean functions of universal variable in place of existential variables.
 	\pause
 	
 	\item The corresponding clauses becomes tautology.
 \end{itemize}
 \pause
  
-\textbf{Ques.} What are allowed values? \\
+Ques. What are allowed values? \\
 \pause
 
-Ans: Any boolean function of dependency set variables.
+Ans. Any boolean function allowed by \textbf{dependency set variables}.
 \end{frame}
 
-\begin{frame}{Solve DQBF: SAT or UNSAT?}
+\begin{frame}{Solve DQCNF: SAT or UNSAT?}
 
 %\vspace{0.2cm}
 
-	\begin{alertblock}{DQCNF formula:}
-	{		
+	\begin{alertblock}{DQCNF formula}{
+\only<1> {
 		F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
 		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 	}
+
+\only<2> {
+	F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
+ }
+\only<3> {
+	F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x},\textcircled{c}\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
+}
+% \only<4> {
+%	F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+%	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
+%	\{c,x,y\}, \textcolor{red}{\{c,\ov{x},\ov{y}, a\}}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+%	\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
+% }
+}
 \end{alertblock}
 
 %\begin{block}{Selected boolean functions}
@@ -193,50 +213,51 @@ Ans: Any boolean function of dependency set variables.
 \end{frame}
 
 
-\begin{frame}{Solving DQCNF Piece-wise}
-\begin{alertblock}{DQCNF formula:} {
+\begin{frame}{Solve DQCNF piece-wise}
+\begin{alertblock}{DQCNF formula} {
 \only<1>	{	
 F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
 	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 }
-\only<2->{
+\only<2-4>{
 F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
     \{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-		\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
+		\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
 }
+
+\only<5>{$F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x,y,\ov{x}, c\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}} $ }  
+%    \pause 
+
+\only<6>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\textcolor{blue}{	\cancel{\{\ov{x},e,x\}}, \cancel{\{x,y,\ov{x}, c\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}} $ }  
+%    \pause 
+
+\only<7>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline $ } 
+
 }
 \end{alertblock}
 
 \begin{exampleblock}{Solve the DQCNF}
-	{   \only Total five choices $a, b, c, d, e$ ...
+	{   \only<1-2> {Total five choices $a, b, c, d, e$}
 		\pause \pause
-		\begin{enumerate}
+		\begin{itemize}
 		%	\pause
 		\only \item Pick $d, e$\\
 		\pause 
 		  $d \to \neg x$, $e \to \neg y$ \newline 
-		\pause 
-
-\only<5>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x,y,\ov{x}, c\} \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}} $ }  
-    %    \pause 
-    
-   \only<6>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-   	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
-   	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-   	\textcolor{blue}{	\cancel{\{\ov{x},e,x\}}, \cancel{\{x,y,\ov{x}, c\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}} $ }  
-   %    \pause 
-
-\only<7>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline $ }   
+		\pause   
 		%	Both these autarkies are also $Eaut_1$-autarkies.
-		\end{enumerate}
+		\end{itemize}
 	}
 \end{exampleblock}
 
@@ -244,44 +265,43 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 \end{frame}
 
 \begin{frame}{Solving DQCNF}
-\begin{alertblock}{DQCNF formula:} {
+\begin{alertblock}{DQCNF formula} {
 		\only<1>	{	
 			$F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
 				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} $
 		}
-		\only<2->{
+		\only<2-4>{
 		$F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \,\exists c(x,y) : \newline 
 			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 	\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} $
 		}
+	
+		\only<5>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+		\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
+	%    \pause 
+	
+	\only<6>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+		\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
+	%    \pause  
+	
+	\only<7>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}
+		$ }
 	}
 \end{alertblock}
 
 \begin{exampleblock}{Solve the DQCNF}
 	{   \pause \pause 
-		\begin{enumerate}
+		\begin{itemize}
 			%	\pause
 			\only \item Pick $c$\\
 			\pause 
-			$c = (x \lor \neg y) \land (\neg x \lor  y)$ \newline 
-			\pause 
-			
-			\only<5>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
-					\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-				\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
-			%    \pause 
-			
-			\only<6>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
-				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-			\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
-		%    \pause  
-			
-			\only<7>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
-				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}
-			 $ }  
+			$c = (x \lor \neg y) \land (\neg x \lor  y)$ \newline   
 		%    \pause 
-		\end{enumerate}
+		\end{itemize}
 	}
 \end{exampleblock}
 
@@ -294,44 +314,51 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 			$F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) : \newline 
 			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\} $
 		}
-		\only<2->{
+		\only<2-4>{
 				$F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) : \newline 
 		\textcolor{blue}{	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\} }$
 		}
+		\only<5>{ $F'''$ :=	 $
+		\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x, y,\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}}  \newline 
+		$ }  
+	%    \pause 
+	
+	\only<6>{ $F'''$ :=	$\textcolor{blue}{	\cancel{\{\ov{x}, \ov{y},x\}}, \cancel{\{x, y,\ov{x}\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}}  \newline 
+		$  }
+	%    \pause  
+	
+	\only<7->{ $F'''$ :=	$\top $ }  
 	}
 \end{alertblock}
 
 \begin{exampleblock}{Solve the DQCNF}
 	{   \pause \pause 
-		\begin{enumerate}
+		\begin{itemize}
 			%	\pause
 			\only \item Pick $a, b$\\
 			\pause 
 			$a = \neg x, b = \neg y$ \newline 
-			\pause 
-			
-			\only<5>{ $F'''$ :=	 $
-			\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x, y,\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}}  \newline 
-				 $ }  
 			%    \pause 
-			
-			\only<6>{ $F'''$ :=	$\textcolor{blue}{	\cancel{\{\ov{x}, \ov{y},x\}}, \cancel{\{x, y,\ov{x}\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}}  \newline 
-				$  }
-			%    \pause  
-			
-			\only<7->{ $F'''$ :=	$\top $ }  
-			%    \pause 
-		\end{enumerate}
+		\end{itemize}
 	}
 
 
 \end{exampleblock}
+\end{frame}
 
-\only<8>{
-	\begin{alertblock}{Total satisfying assignment} {
-			$ a \to \neg x, \, b \to \neg y, \, c \to (x=y), \, d \to \neg x, \, e \to \neg y$
+\begin{frame}{DQCNF F is SAT}
+\begin{alertblock}{DQCNF formula} {
+			$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+			\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 		}
-\end{alertblock} }
+\end{alertblock}
+\pause 
+	\begin{exampleblock}{Total satisfying assignment} {
+			$ a \to \neg x, \, b \to \neg y, \, c \to (x \Leftrightarrow  y), \, d \to \neg x, \, e \to \neg y$
+		}
+    \end{exampleblock} 
 %\textbf{lean kernel} of the original formula.
 \end{frame}
 
@@ -446,8 +473,10 @@ For an autarky $\varphi$ of $F$
  \end{proof}
 \end{frame}
 
-\begin{frame}{Basic Lemmas}
- Autarky reduction is confluent  
+\begin{frame}{The basic lemmas}
+\begin{lemma}[]
+ Autarky reduction is confluent.  
+\end{lemma}
  \pause 
   \begin{lemma}[]
   The composition of two autarkies is again an autarky.
