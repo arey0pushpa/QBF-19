@@ -217,19 +217,19 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 		%	\pause
 		\only \item Pick $d, e$\\
 		\pause 
-		  $d \to \neg x$ and $e \to \neg y$ \newline 
+		  $d \to \neg x$, $e \to \neg y$ \newline 
 		\pause 
 
 \only<5>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
 	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-\textcolor{blue}{	\{\ov{x},e,x\}, \{x,\ov{e},\ov{x}, c\} \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}} $ }  
+\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x,y,\ov{x}, c\} \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}} $ }  
     %    \pause 
     
    \only<6>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
    	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
    	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-   	\textcolor{blue}{	\cancel{\{\ov{x},e,x\}}, \cancel{\{x,\ov{e},\ov{x}, c\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}} $ }  
+   	\textcolor{blue}{	\cancel{\{\ov{x},e,x\}}, \cancel{\{x,y,\ov{x}, c\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}} $ }  
    %    \pause 
 
 \only<7>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
@@ -267,19 +267,19 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 			$c = (x \lor \neg y) \land (\neg x \lor  y)$ \newline 
 			\pause 
 			
-			\only<5>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+			\only<5>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
 					\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 				\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
 			%    \pause 
 			
-			\only<6>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+			\only<6>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
 				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 			\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
 		%    \pause  
 			
-			\only<7>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
-				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-			\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
+			\only<7>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}
+			 $ }  
 		%    \pause 
 		\end{enumerate}
 	}
