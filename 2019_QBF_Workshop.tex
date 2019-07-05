@@ -122,18 +122,26 @@
 
 	\begin{alertblock}{DQCNF formula}
 	{		
-		F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+		\only<1,3-6> {
+			$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+			\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+		}
+		\only<2,7> {
+		$F$ :=	$ \forall x, y \, \exists \textcolor{orange}{a(x)} \, \exists  \textcolor{orange}{b(y)} \, \exists \textcolor{orange}{c(x,y)} \, \exists \textcolor{orange}{d(x)} \, \exists \textcolor{orange}{e(y)} :
 		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 	}
+	}
 \end{alertblock}
-\pause
+\pause \pause
 
 Rules of the game \\
 
 \begin{itemize}
-	\pause
+	\pause 
 	
 	\item Substitute boolean functions of universal variable in place of existential variables.
 	\pause
@@ -154,14 +162,14 @@ Ans. Any boolean function allowed by \textbf{dependency set variables}.
 
 	\begin{alertblock}{DQCNF formula}{
 \only<1> {
-		F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+		$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
 		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 	}
 
 \only<2> {
-	F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+	$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
 	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 	\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
@@ -213,34 +221,34 @@ Ans. Any boolean function allowed by \textbf{dependency set variables}.
 \end{frame}
 
 
-\begin{frame}{Solve DQCNF piece-wise}
+\begin{frame}{Solve DQCNF piece by piece}
 \begin{alertblock}{DQCNF formula} {
 \only<1>	{	
-F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
 	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 }
 \only<2-4>{
-F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
     \{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 		\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
 }
 
-\only<5>{$F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+\only<5>{$F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
 	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 	\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x,y,\ov{x}, c\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}} $ }  
 %    \pause 
 
-\only<6>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+\only<6>{ $F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
 	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 	\textcolor{blue}{	\cancel{\{\ov{x},e,x\}}, \cancel{\{x,y,\ov{x}, c\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}} $ }  
 %    \pause 
 
-\only<7>{ $F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+\only<7>{ $F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
 	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline $ } 
 
@@ -248,7 +256,7 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 \end{alertblock}
 
 \begin{exampleblock}{Solve the DQCNF}
-	{   \only<1-2> {Total five choices $a, b, c, d, e$}
+	{   \only<1-2> {Choices $a, b, c, d, e$}
 		\pause \pause
 		\begin{itemize}
 		%	\pause
@@ -264,42 +272,52 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 %\textbf{lean kernel} of the original formula.
 \end{frame}
 
-\begin{frame}{Solving DQCNF}
+\begin{frame}{Solve DQCNF piece by piece}
 \begin{alertblock}{DQCNF formula} {
 		\only<1>	{	
-			$F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+			$F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
 				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} $
 		}
-		\only<2-4>{
-		$F'$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \,\exists c(x,y) : \newline 
+		\only<2>	{	
+		$F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+		\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
+		\{c,x,y\},\{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} $
+	}
+	\only<3>	{	
+	$F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
+	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
+	\{c,x,y\},  \textcolor{red}{\{c,\ov{x},\ov{y}, a\}}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} $
+}
+		\only<4-6>{
+		$F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \,\exists c(x,y) : \newline 
 			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 	\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} $
 		}
 	
-		\only<5>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+		\only<7>{ $F_2$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
 		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-		\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
+		\textcolor{blue} {\{ x \Leftrightarrow y,x,y\}, \{ x \Leftrightarrow y,\ov{x},\ov{y}, a\}, \{\ov{x \Leftrightarrow y},x,\ov{y}\}, \{\ov{x \Leftrightarrow y},\ov{x},y\}}  $ }  
 	%    \pause 
 	
-	\only<6>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
-		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-		\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}}  $ }  
+	\only<8>{ $F_2$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+	\textcolor{blue} { \cancel{\{ x \Leftrightarrow y,x,y\}},  \cancel{\{ x \Leftrightarrow y,\ov{x},\ov{y}, a\}},  \cancel{\{\ov{x \Leftrightarrow y},x,\ov{y}\}},  \cancel{\{\ov{x \Leftrightarrow y}}, \cancel{\ov{x},y\}}}  $ }  
 	%    \pause  
 	
-	\only<7>{ $F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
+	\only<9>{ $F_2$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
 		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}
 		$ }
 	}
 \end{alertblock}
 
 \begin{exampleblock}{Solve the DQCNF}
-	{   \pause \pause 
+	{   \pause \pause \pause \pause
 		\begin{itemize}
 			%	\pause
 			\only \item Pick $c$\\
 			\pause 
-			$c = (x \lor \neg y) \land (\neg x \lor  y)$ \newline   
+			$c = x \Leftrightarrow y  \,\,\,\,\, (x \lor \neg y) \land (\neg x \lor  y)$ \newline   
 		%    \pause 
 		\end{itemize}
 	}
@@ -308,26 +326,26 @@ F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exist
 %\textbf{lean kernel} of the original formula.
 \end{frame}
 
-\begin{frame}{Solving DQCNF}
-\begin{alertblock}{DQCNF formula:} {
+\begin{frame}{Solve DQCNF piece by piece}
+\begin{alertblock}{DQCNF formula} {
 		\only<1>	{	
-			$F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) : \newline 
+			$F_2$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) : \newline 
 			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\} $
 		}
 		\only<2-4>{
-				$F''$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) : \newline 
+				$F_2$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) : \newline 
 		\textcolor{blue}{	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\} }$
 		}
-		\only<5>{ $F'''$ :=	 $
+		\only<5>{ $F_3$ :=	 $
 		\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x, y,\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}}  \newline 
 		$ }  
 	%    \pause 
 	
-	\only<6>{ $F'''$ :=	$\textcolor{blue}{	\cancel{\{\ov{x}, \ov{y},x\}}, \cancel{\{x, y,\ov{x}\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}}  \newline 
+	\only<6>{ $F_3$ :=	$\textcolor{blue}{	\cancel{\{\ov{x}, \ov{y},x\}}, \cancel{\{x, y,\ov{x}\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}}  \newline 
 		$  }
 	%    \pause  
 	
-	\only<7->{ $F'''$ :=	$\top $ }  
+	\only<7->{ $F_3$ :=	$\top $ }  
 	}
 \end{alertblock}
 
