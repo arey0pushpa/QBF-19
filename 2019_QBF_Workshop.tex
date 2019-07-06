@@ -22,6 +22,13 @@
 \usepackage{soul}
 
 
+% color the cell of a table
+\usepackage[table]{}% http://ctan.org/pkg/xcolor
+\usepackage{multirow}
+% Table required packages
+\usepackage{hhline}
+\usepackage{adjustbox}
+
 \usepackage{array}
 %\newtheorem{lemma}{Lemma}
 \usepackage[customcolors]{hf-tikz}
@@ -123,21 +130,33 @@
 
 	\begin{alertblock}{DQCNF formula}
 	{		
-		\only<1,3-6> {
+		\only<1,5-8> {
 			$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
 			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 			\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 		}
-		\only<2,7> {
+		\only<2,9> {
 		$F$ :=	$ \forall x, y \, \exists \textcolor{orange}{a(x)} \, \exists  \textcolor{orange}{b(y)} \, \exists \textcolor{orange}{c(x,y)} \, \exists \textcolor{orange}{d(x)} \, \exists \textcolor{orange}{e(y)} :
 		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 	}
+  \only<3> {
+	$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
+  }
+  \only<4> {
+	F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x},\textcircled{c}\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
+}
 	}
 \end{alertblock}
-\pause \pause
+\pause \pause \pause \pause 
 
 Rules of the game \\
 
@@ -157,38 +176,27 @@ Ques. What are allowed values? \\
 Ans. Any boolean function allowed by \textbf{dependency set variables}.
 \end{frame}
 
-\begin{frame}{Solve DQCNF: SAT or UNSAT?}
+%\begin{frame}{Solve DQCNF: SAT or UNSAT?}
+%
+%%\vspace{0.2cm}
+%
+%	\begin{alertblock}{DQCNF formula}{
+%\only<1> {
+%		$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+%		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+%		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+%		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+%	}
 
-%\vspace{0.2cm}
 
-	\begin{alertblock}{DQCNF formula}{
-\only<1> {
-		$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
-	}
-
-\only<2> {
-	$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-	\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
- }
-\only<3> {
-	F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-	\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x},\textcircled{c}\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
-}
 % \only<4> {
 %	F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
 %	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
 %	\{c,x,y\}, \textcolor{red}{\{c,\ov{x},\ov{y}, a\}}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 %	\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
 % }
-}
-\end{alertblock}
+%}
+%\end{alertblock}
 
 %\begin{block}{Selected boolean functions}
 % \only<2> {
@@ -219,7 +227,7 @@ Ans. Any boolean function allowed by \textbf{dependency set variables}.
 %}
 %\end{block}
 
-\end{frame}
+%\end{frame}
 
 
 \begin{frame}{Solve DQCNF piece by piece}
@@ -238,28 +246,28 @@ $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exi
 }
 
 \only<5>{$F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
+\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 	\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x,y,\ov{x}, c\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}} $ }  
 %    \pause 
 
 \only<6>{ $F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
+\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 	\textcolor{blue}{	\cancel{\{\ov{x},e,x\}}, \cancel{\{x,y,\ov{x}, c\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}} $ }  
 %    \pause 
 
 \only<7>{ $F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-	\{\ov{x},b,x\}, \{x,\ov{b},\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}  \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline $ } 
+\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline  
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}$ } 
 
 }
 \end{alertblock}
 
 \begin{exampleblock}{Solve the DQCNF}
-	{   \only<1-2> {Choices $a, b, c, d, e$}
+	{   \only<1-2> {Choices $a, b, c, d, e$ \newline} 
 		\pause \pause
-		\begin{itemize}
+	\only<3->	{\begin{itemize}
 		%	\pause
 		\only \item Pick $d, e$\\
 		\pause 
@@ -267,6 +275,7 @@ $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exi
 		\pause   
 		%	Both these autarkies are also $Eaut_1$-autarkies.
 		\end{itemize}
+	}
 	}
 \end{exampleblock}
 
@@ -318,7 +327,9 @@ $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exi
 			%	\pause
 			\only \item Pick $c$\\
 			\pause 
-			$c = x \Leftrightarrow y  \,\,\,\,\, (x \lor \neg y) \land (\neg x \lor  y)$ \newline   
+			$c = x \Leftrightarrow y  $
+			%\,\,\,\,\, (x \lor \neg y) \land (\neg x \lor  y)$ 
+			\newline   
 		%    \pause 
 		\end{itemize}
 	}
@@ -338,12 +349,11 @@ $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exi
 		\textcolor{blue}{	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\} }$
 		}
 		\only<5>{ $F_3$ :=	 $
-		\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x, y,\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}}  \newline 
+		\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x, y,\ov{x}\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}}
 		$ }  
 	%    \pause 
 	
-	\only<6>{ $F_3$ :=	$\textcolor{blue}{	\cancel{\{\ov{x}, \ov{y},x\}}, \cancel{\{x, y,\ov{x}\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}}  \newline 
-		$  }
+	\only<6>{ $F_3$ :=	$\textcolor{blue}{	\cancel{\{\ov{x}, \ov{y},x\}}, \cancel{\{x, y,\ov{x}\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}}		$  }
 	%    \pause  
 	
 	\only<7->{ $F_3$ :=	$\top $ }  
@@ -375,7 +385,7 @@ $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exi
 \end{alertblock}
 \pause 
 	\begin{exampleblock}{Total satisfying assignment} {
-			$ a \to \neg x, \, b \to \neg y, \, c \to (x \Leftrightarrow  y), \, d \to \neg x, \, e \to \neg y$
+			$ a \to \neg x, \, b \to \neg y, \, c \to (x \Leftrightarrow  y), \, d \to \neg x, \, e \to \neg y \newline $
 		}
     \end{exampleblock} 
 %\textbf{lean kernel} of the original formula.
@@ -452,16 +462,22 @@ Autarkies for SAT \newline
 %An autarky $\phi$ for $F$ is \textbf{trivial} if $var(\phi) \, \cap \, var(C)$ = $\phi$ \newline
 \end{frame}
 
-\begin{frame}{The extreme cases}
+\begin{frame}{The interesting cases}
 
 \begin{enumerate}
-	\item The empty partial assignment is an autarky for every F \newline (trivial autarky).
+	\item The empty partial assignment is an autarky for every F \newline (trivial autarky).\newline 
 	
 	\item A satisfying assignment for F is also an autarky for F. \newline
+	\pause 
+	\item Elimination of \textbf{pure literals} is a special case of an ``autarky reduction". 
+	\newline
+	
+	A literal $x$ is \textit{pure} if $\ov{x}$ does not occur in $F$. \newline 
+	Yields an autarky, $x \to 1$ for $F$.
 \end{enumerate}
-\pause 
-\vspace{0.5cm}
-Elimination of \textbf{pure literals} is a special case of an ``autarky reduction".
+%\pause 
+%\vspace{0.5cm}
+
 %A \textbf{lean} clause-set is a clause-set $F$ which has
 %only the trivial autarky. \newline 
 
@@ -486,7 +502,7 @@ Applications:
   \begin{alertblock}{Our solution: Autarky Systems}
   \begin{itemize}
       \item restricting the range of autarkies to a more feasible domain.
-      \item maintain the good general properties of arbitrary autarkies.
+      \item maintain the good general properties of arbitrary autarkies~\cite{buning2009minimal}.
   \end{itemize}
  
   \end{alertblock}
@@ -519,7 +535,7 @@ Applications:
 
 \begin{frame}{The basic lemmas}
  \begin{itemize}
- \item A DQCNF is called \textbf{lean} if it has no non-trivial autarkies. \newline
+ \item A DQCNF F is called \textbf{lean} if it has no non-trivial autarkies. \newline
  	\pause 
  	
  \item	\textbf{Lean kernel} (unique) is obtained by repeatedly applying autarky-reduction on $F$ as long as possible. \newline
@@ -624,18 +640,18 @@ Applications:
     
     \begin{example}
     	Exactly one $A_1$-autarky \newline 
-    	 $a \to \neg x \newline$ 
-    	 $b \to \neg y \newline$
+    	 $a \to \neg x$, $b \to \neg y \newline$
     	 $F$ is $E_1$-lean.
-    	 
     \end{example}
+
+Deciding whether a DQCNF has a non-trivial $A_1$-autarky is \textbf{NP-complete}.
 \end{frame}
     
 \begin{frame}{A- and E-systems: $E_1$ Autarky system}
 $E_1$ only uses one existential variable. 
 \begin{alertblock}{DQCNF formula}
 	{		
-		$F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
+		$F_1$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
 		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
 		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 	}
@@ -645,10 +661,12 @@ $E_1$ only uses one existential variable.
 	Exactly one $E_1$-autarky \newline 
 	$c \to (x \lor \neg y) \land (\neg x \lor y)$
 	
-	$F'$ $A_1$-lean.
+	$F_1$ $A_1$-lean.
 	
 \end{example} 
 
+Deciding the existence of $E_1$-autarky can be done in
+\textbf{polynomial time}.
 \end{frame}
 
 %\begin{frame}{Autarky reduction}
@@ -671,11 +689,32 @@ $E_1$ only uses one existential variable.
 %    \vspace{0.2cm}
 %\end{frame}
 
-\begin{frame}{Translation to SAT: Finding $A_1$ via compilation}
+\begin{frame}{Translation (\textbf{t}) to SAT: Finding $A_1$ via compilation}
 \begin{enumerate}
-    \item \textbf{Selected (boolean) functions}: restrict to some ``interesting" selection \textbf{s(v)} $\subseteq$ boolean function, and treat the elements of s(v) as the possible values of v. \newline 
+    \item \textbf{Selected (boolean) functions}: 
+    explicitly list the possible boolean functions as values of the existential variables. \newline
+ 
+    %$\textcolor{orange}{\exists c(x,y)}$ \newline 
+    $\texttt{S(c)} = t(c, 0) , t(c, 1), t(c, x), t(c, \neg x), t(c, y), t(c, \neg y)$	 \newline 
+
+   \pause   
+    %restrict to some ``interesting" selection \textbf{s(v)} $\subseteq$ boolean function, and treat the elements of s(v) as the possible values of v. \newline 
+  
+    \item\textbf{Admissible partial assignment}:
+    compile for each clause $C \in F$ the minimal possibilities
+    for $C$ to become a tautology. \newline 
     
-    \item \textbf{Admissible partial assignment:} For each $C \in F$ , \textbf{compile} all possibilities for admissible partial satisfying assignments for C into some CNF-representation \textbf{P(C)}.
+    $\texttt{M} (\{\texttt{c},\ov{\texttt{x}},\ov{\texttt{y}}, \texttt{a}\})$ = 
+    $p(c, 1) , p(a, 1),
+    \pause 
+    p(c, x), p(c, y), p(a, x), \newline 
+    \pause 
+   \hspace{2.75cm} p(c, x, a, \neg x), p(c, \neg x, a, x) $ \newline 
+    %For each $C \in F$ , \textbf{compile} all possibilities for admissible partial satisfying assignments for C into some CNF-representation \textbf{P(C)}.
+    \pause
+    \item \textbf{Selector-variable}: if $C$ is touched (selected), at least one of the minimal possibilities for $C$ is fulfilled. \newline 
+    
+    \texttt{ALO}($\texttt{M} (\{\texttt{c},\ov{\texttt{x}},\ov{\texttt{y}} \})$)
 \end{enumerate}
 
 \end{frame}
@@ -700,22 +739,22 @@ $E_1$ only uses one existential variable.
 % \end{exampleblock}
 %\end{frame}
 
-\begin{frame}{Minimal possibilities for $C$ to become a tautology}
-%Compile for each clause the minimal possibilities to make it a tautology.
-    \begin{enumerate}
-        \item some existential $y \in C$ is set to 1;
-        \item some existential $y \in C$ there is a universal $x \in C$ with $var(x) \in  D(var(y))$, and y is set to x;
-        \item for some existential $y, y' \in C$, $y, y'$ , there is a universal $x \in D(var(y))$, and $y$ is set to $x$ and $y'$ to $x$. 
-    \end{enumerate}
+%\begin{frame}{Minimal possibilities for $C$ to become a tautology}
+%%Compile for each clause the minimal possibilities to make it a tautology.
+%    \begin{enumerate}
+%        \item some existential $y \in C$ is set to 1;
+%        \item some existential $y \in C$ there is a universal $x \in C$ with $var(x) \in  D(var(y))$, and y is set to x;
+%        \item for some existential $y, y' \in C$, $y, y'$ , there is a universal $x \in D(var(y))$, and $y$ is set to $x$ and $y'$ to $x$. 
+%    \end{enumerate}
+%
+%\begin{exampleblock}{The admissible autarkies}
+%
+%$...\exists y_2(x_2,x_3) ... (\ov{y_2} \vee \ov{x_2} \vee x_3)$ \newline
+% 
+%$S(\ov{y_2} \vee \ov{x_2} \vee x_3) = \{ \ev{y_2 \to 0}, \ev{y_2 \to \ov{x_2}}, \ev{y_2 \to x_3} \} $ 
+%\end{exampleblock}
 
-\begin{exampleblock}{The admissible autarkies}
-
-$...\exists y_2(x_2,x_3) ... (\ov{y_2} \vee \ov{x_2} \vee x_3)$ \newline
- 
-$S(\ov{y_2} \vee \ov{x_2} \vee x_3) = \{ \ev{y_2 \to 0}, \ev{y_2 \to \ov{x_2}}, \ev{y_2 \to x_3} \} $ 
-\end{exampleblock}
-
-\end{frame}
+%\end{frame}
 %
 %\begin{frame}{Frame Title}
 %We choose distinct new pa-variables
@@ -751,62 +790,62 @@ $S(\ov{y_2} \vee \ov{x_2} \vee x_3) = \{ \ev{y_2 \to 0}, \ev{y_2 \to \ov{x_2}}, 
 %  \end{equation}
 %\end{frame}
 
-\begin{frame}{Numbers}
-334 instances in the DQBF track of QBFEVAL'18 
+\begin{frame}{Numbers: Computing normalforms in DQBF track}
+334 instances in the DQBF track of QBFEVAL'18 in 9000s. \newline
+(finding an autarky is quick, proving UNSAT: time consuming.)
+%\begin{itemize}
+%    \item 330 instances are $E_1$+$A_1$-lean (have no non-trivial $E_1$- or $A_1$-autarky). 
+%    \item From the remaining 4 instances, all are $E_1$-lean, one is $A_1$-satisfiable, 
+%    \item one is $E_1 + A_1$-satisfiable, 
+%    \item the remaining two instances are not $E_1 + A_1$-satisfiable,
+%    \item but allow $A_1$-autarkies eliminating in both cases around 80 of variables
+%and clauses (while adding $E_1$ does not change this).
+%\end{itemize}
 
-\begin{itemize}
-    \item 330 instances are $E_1$+$A_1$-lean (have no non-trivial $E_1$- or $A_1$-autarky). 
-    \item From the remaining 4 instances, all are $E_1$-lean, one is $A_1$-satisfiable, 
-    \item one is $E_1 + A_1$-satisfiable, 
-    \item the remaining two instances are not $E_1 + A_1$-satisfiable,
-    \item but allow $A_1$-autarkies eliminating in both cases around 80 of variables
-and clauses (while adding $E_1$ does not change this).
-\end{itemize}
-
-\end{frame}
+%\end{frame}
 
 %\begin{frame}{Results}
-%\begin{table}[t]
-%  \centering
-%\adjustbox{max height=\dimexpr\textheight-5.5cm\relax,
-%           max width=\textwidth}{
-%\begin{tabular}[t]{|c|c|c|c|c|}\hline
-%  
-%   {\multirow{2}{*} {\textbf{Solver}}}  & {\multirow{2}{*} {\textbf{Solved instance}}} &  \multicolumn{2}{c|}{\textbf{Instance}} & {\multirow{2}{*} {\textbf{Time}}} \\\cline{3-4}
-%  
-%   %{} & \multicolumn{2}{c|}{\textbf{2-connected} } & \multicolumn{2}{c|}{\textbf{3-connected} } & \multicolumn{2}{c|}
-%   
-%  % \\\cline{2-5}
-%    {} & {} & {\textbf{Unsat}} & {\textbf{Sat}} & {} \\\hline
-%     Rev-Qfun & 220 & 145 & 75 & 572K \\\hline 
-%     GhostQ & 194 & 120 & 74 & 617K \\\hline 
-%     CAQE & 170 & 128 & 42 & 656K \\\hline 
-%     \cellcolor{blue!25}\textsc{RAReQS} & {\color{blue}{\textbf{167}}} & \textbf{133} & 34 & 660K \\\hline 
-%     DepQBF & 167 & 121 & 46 & 666K \\\hline 
-%    \cellcolor{red!25}\textsc{Heretic} & {\color{red}{163}} &\textbf{ 133} & 30 & 664K \\\hline 
-%    \cellcolor{green!25} \textsc{Ijtihad} & {\color{britishracinggreen}{150}} & 127 & 23 & 684K \\\hline 
-%%Qute 130 91 39 720K
-%%QESTO 109 86 23 761K
-%%DynQBF 72 38 34 826K
-%%QSTS 152 116 36 687K   
-%  \end{tabular}
-%}
+\begin{table}[t]
+  \centering
+\adjustbox{max height=\dimexpr\textheight-5.5cm\relax,
+           max width=\textwidth}{
+\begin{tabular}[t]{|c|c|c|c|c|}\hline
+  
+{\multirow{2}{*} {\textbf{No.}}} &   {\multirow{2}{*} {\textbf{Instances}}}  & {\multirow{2}{*} {\textbf{Autarky type}}} &  \multicolumn{2}{c|}{\textbf{Reduction}}  \\\cline{4-5}
+  
+   %{} & \multicolumn{2}{c|}{\textbf{2-connected} } & \multicolumn{2}{c|}{\textbf{3-connected} } & \multicolumn{2}{c|}
+   
+  % \\\cline{2-5}
+   {} & {} & {} & {\textbf{c(F)}} & {\textbf{c(F')}} \\\hline
+    {0.} & 330 instances  & $E_1$+$A_1$-lean & - & - \\\hline 
+     {1.} & \cellcolor{blue!18}\textsc{bloem\_eq1.dqdimacs} & {\color{blue}{\textbf{A1-satisfiable}}} & \textbf{-} & - \\\hline 
+   {2.} &   \cellcolor{red!25} \textsc{tentrup17\_ltl2dba\_theta}\_ \textsc{env1.dqdimacs} & {\color{red}{E1+A1-satisfiable}} & - & - \\\hline 
+    {3.} & \cellcolor{green!25}\textsc{bloem\_ex1.dqdimacs} & {\color{britishracinggreen}{A1: non-trivial autarky}} & 52 & \textbf{18}  \\\hline 
+  {4.} &   \cellcolor{green!25} \textsc{bloem\_ex2.dqdimacs} & {\color{britishracinggreen}{A1: non-trivial autarky}} & 139 & 99 \\\hline 
+%Qute 130 91 39 720K
+%QESTO 109 86 23 761K
+%DynQBF 72 38 34 826K
+%QSTS 152 116 36 687K   
+  \end{tabular}
+}
 % \caption{Original Instances (time include timeouts).}
-%  \label{tab:qf-grabh}
-%\end{table}
-%\end{frame}
+  \label{tab:qf-grabh}
+\end{table}
+\end{frame}
 
 \begin{frame}{Conclusion}
 \begin{itemize}
 \item Autarky theory for DQBF.
-\item Three Autarky systems $A_1$, $E_1$,$E_1 + A_1$
-\item A SAT translation 
+\item Three autarky systems $A_1$, $E_1$, $E_1 + A_1$.
+\item A SAT translation. 
 \end{itemize}
 \vspace{0.5cm}
 \textbf{Future Work: \newline}
 \begin{itemize}
-	\item Run on the complete 11600 instance of QBFEVAL.
-	\item Consider more stronger autarky systems.
+	\item Determining the (unique) normalforms for
+	$A_1$, $E_1$, $E_1$+$A_1$ for all over 12,000 instances in QBFLIB.
+	\item Consider more stronger autarky systems $A_2, E_2$.
+%	\item Perform inprocessing.
 \end{itemize}
 \vspace{0.5cm}
 \Large
