@@ -494,30 +494,43 @@ Applications:
 \end{frame}
 
 \begin{frame}{The basic lemmas}
-For an autarky $\varphi$ of $F$
- \begin{lemma}[]
-   $\varphi$ $\ast$ $F$ is satisfiability-equivalent to $F$.
+ \begin{lemma}[satisfiability-equivalence]
+  For an autarky $\varphi$ of $F$, $\varphi$ $\ast$ $F$ is satisfiability-equivalent to $F$.
  \end{lemma}
-\pause
- \begin{proof}
+%\pause
+\only<1>{\begin{proof}
  	($\leftarrow$) A satisfying assignment of F satisfies also
  	$\varphi \ast F$, since just clauses have been removed. 
  	
  	 ($\to$) If $\phi$ is a total satisfying assignment for $\varphi \ast F$, then $\varphi \cup \phi$ is a (partial) satisfying assignment for F.
  \end{proof}
+}
+\only<2->{
+	\begin{lemma}[confluence]
+		Autarky reduction is confluent.  
+	\end{lemma}
+%}
+%\only<3->{
+	\begin{lemma}[composition]
+		The composition of two autarkies is again an autarky.
+	\end{lemma}
+}
 \end{frame}
 
 \begin{frame}{The basic lemmas}
-\begin{lemma}[]
- Autarky reduction is confluent.  
-\end{lemma}
+ \begin{itemize}
+ \item A DQCNF is called \textbf{lean} if it has no non-trivial autarkies. \newline
+ 	\pause 
+ 	
+ \item	\textbf{Lean kernel} (unique) is obtained by repeatedly applying autarky-reduction on $F$ as long as possible. \newline
+ \end{itemize}
+  
+% \end{lemma}
  \pause 
-  \begin{lemma}[]
-  The composition of two autarkies is again an autarky.
- \end{lemma}
-  \pause 
-  \begin{lemma}[]
-   Given a DQCNF $F$, the largest lean sub-DQCNF is also obtained \newline  by applying autarky-reduction to $F$ as long as possible.
+  \begin{lemma}[autarky decomposition]
+ 	Every chain of autarky reductions starting
+ 	with F can be extended \newline to it's lean kernel (where
+ 	it necessarily ends).
  \end{lemma}
 \vspace{0.5cm}
  
@@ -561,30 +574,34 @@ For an autarky $\varphi$ of $F$
 %\end{enumerate}
 %\end{frame}
 
-\begin{frame}{A- and E-systems}
-%Consider a DQCNF $F$ and $k \geq 0$: \newline
+%\begin{frame}{A- and E-systems}
+%%Consider a DQCNF $F$ and $k \geq 0$: \newline
+%%\begin{enumerate}
+%%    \item An $Ak$- autarky for $F$ is an autarky such that all boolean functions assigned depend essentially on at most $k$ variables.
+%%    \item An $Ek$-autarky is an autarky assigns at most $k$ (existential) variables. 
+%%\end{enumerate}
+%
+%\vspace{0.4cm}
+%
+%We have considered three Autarky Systems \newline 
+%\textbf{$A_1$, $E_1$, $E_1 + A_1$}. \newline
+%
 %\begin{enumerate}
-%    \item An $Ak$- autarky for $F$ is an autarky such that all boolean functions assigned depend essentially on at most $k$ variables.
-%    \item An $Ek$-autarky is an autarky assigns at most $k$ (existential) variables. 
+%	\item $A_1$ allow the boolean functions to  
+%	depend on 1 \newline universal variable. \newline
+%	
+%%	Deciding whether a DQCNF has a non-trivial
+%%	$A_1$-autarky is NP-complete.
+%	
+%	\item $E_1$ only uses one existential variable. \newline
+%%	Deciding the existence and finding some short $E_1$-autarky can be done in	polynomial time.
+%	
+%	\item $A_1 + E_1$, combination of $A_1$ and $E_1$-autarky system. 
 %\end{enumerate}
+%
+%\end{frame}
 
-\vspace{0.4cm}
-
-We have considered three Autarky Systems \newline 
-\textbf{$A_1$, $E_1$, $A_1 + E_1$}. \newline
-
-\begin{enumerate}
-	\item $A_1$ allow the boolean functions to  
-	depend on 1 universal variable.
-	
-	\item $E_1$ only uses one existential variable.
-	
-	\item $A_1 + E_1$, combination of $A_1$ and $E_1$-autarky system.
-\end{enumerate}
-
-\end{frame}
-
-\begin{frame}{$A_1$ Autarky system: NP-complete}
+\begin{frame}{A- and E-systems: $A_1$ Autarky system}
 %Consider a DQCNF $F$ and $k \geq 0$: \newline
 %\begin{enumerate}
 %    \item An $Ak$- autarky for $F$ is an autarky such that all boolean functions assigned depend essentially on at most $k$ variables.
@@ -596,7 +613,7 @@ We have considered three Autarky Systems \newline
  $A_1$ allow the boolean functions to  
 	depend on 1 universal variable. 
 	
-	\begin{alertblock}{DQCNF formula:}
+	\begin{alertblock}{DQCNF formula}
 		{		
 		F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
 			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
@@ -614,9 +631,9 @@ We have considered three Autarky Systems \newline
     \end{example}
 \end{frame}
     
-\begin{frame}{$E_1$ Autarky system: Polytime}
+\begin{frame}{A- and E-systems: $E_1$ Autarky system}
 $E_1$ only uses one existential variable. 
-\begin{alertblock}{DQCNF formula:}
+\begin{alertblock}{DQCNF formula}
 	{		
 		$F'$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
 		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
