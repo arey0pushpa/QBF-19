@@ -26,6 +26,7 @@
 %\newtheorem{lemma}{Lemma}
 \usepackage[customcolors]{hf-tikz}
 \usepackage{tikz}
+ \usetikzlibrary{decorations.pathreplacing}
 
 \newcommand{\ov}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 
@@ -409,8 +410,21 @@ $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exi
 \begin{frame}{Autarkies for DQCNF}
 Autarkies for SAT \newline 
 
-\textit{An autarky for a clause-set $F$ is a \textbf{partial assignment} $\varphi$ iff for every clause $C \in F$ either $\varphi$ does not ``touch" $C$, i.e., $var(\varphi) \cap var(C) = \emptyset$, \newline or $\varphi$ satisfies $C$, i.e., $\varphi \ast \{C\} = \top$.\newline
-}
+\textit{An autarky for a clause-set $F$ is a \textbf{partial assignment} $\varphi$ iff for every clause $C \in F$ either $\varphi$ does not ``touch" $C$, i.e., $var(\varphi) \cap var(C) = \emptyset$, \newline or $\varphi$ satisfies $C$.}\newline
+
+%	$\overbrace{\tikz[baseline]{
+%			\node[fill=yellow!50,anchor=base] (t1)
+%			{\varphi \ast \{C\} = \top};} 
+%	\rule[-12pt]{0pt}{5pt}}^{\mbox{Application of partial assignmt}} $
+%\begin{equation}
+%\begin{split} 
+%& \underbrace{\tikz[baseline]{%
+%		\node[fill=blue!30,anchor=base] (t1)
+%		{$\varphi \ast \{C\} = \top$};
+%	} \rule[-12pt]{0pt}{5pt}}_{\mbox{$A$}} \bar{w}_p                  
+%\end{split}                     
+%\end{equation}
+
 \pause 
 
 \begin{itemize}
@@ -441,11 +455,13 @@ Autarkies for SAT \newline
 \begin{frame}{The extreme cases}
 
 \begin{enumerate}
-	\item The empty partial assignment is an autarky for every F \newline (trivial autarky)
+	\item The empty partial assignment is an autarky for every F \newline (trivial autarky).
 	
 	\item A satisfying assignment for F is also an autarky for F. \newline
 \end{enumerate}
-
+\pause 
+\vspace{0.5cm}
+Elimination of \textbf{pure literals} is a special case of an ``autarky reduction".
 %A \textbf{lean} clause-set is a clause-set $F$ which has
 %only the trivial autarky. \newline 
 
@@ -458,7 +474,7 @@ Autarkies for SAT \newline
 
 Applications: 
 \begin{enumerate}
-    \item Study of minimal unsatisfiability
+    \item Study of minimal unsatisfiability~\cite{buning2009minimal}
     \item Pre-processing 
     \item Inprocessing
 \end{enumerate}
@@ -469,8 +485,8 @@ Applications:
     \pause 
   \begin{alertblock}{Our solution: Autarky Systems}
   \begin{itemize}
-      \item restricting the range of autarkies to a more feasible domain
-      \item maintain the good general properties of arbitrary autarkies
+      \item restricting the range of autarkies to a more feasible domain.
+      \item maintain the good general properties of arbitrary autarkies.
   \end{itemize}
  
   \end{alertblock}
@@ -778,6 +794,11 @@ and clauses (while adding $E_1$ does not change this).
 \vspace{0.5cm}
 \Large
 Thanks!
+\end{frame}
+
+\begin{frame}{Bibliography}
+\bibliographystyle{plainnat}
+\bibliography{qbf19}
 \end{frame}
 
 \end{document}
