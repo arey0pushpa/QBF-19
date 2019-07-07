@@ -593,7 +593,7 @@ Applications:
  \pause 
   \begin{lemma}[autarky decomposition]
   	A DQCNF can always be decomposed into largest
-  	autark sub-DQCNF (satisfiable part by autarky) and largest lean sub-DQCNF (lean kernel ). \newline
+  	autark sub-DQCNF (satisfiable part by autarky) and largest lean sub-DQCNF (lean kernel). \newline
   	
  	Every chain of autarky reductions starting
  	with F can be extended \newline to it's lean kernel (where
@@ -720,6 +720,24 @@ Deciding the existence of $E_1$-autarky can be done in
 \textbf{polynomial time}.
 \end{frame}
 
+\begin{frame}{A- and E-systems: $E_1$ Autarky system: $E_1$ + $A_1$}
+\begin{alertblock}{DQCNF formula} {
+		$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
+		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
+		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+	}
+\end{alertblock}
+\pause 
+\begin{exampleblock}{Total satisfying assignment} {
+		$ a \to \neg x, \, b \to \neg y, \, c \to (x \Leftrightarrow  y), \, d \to \neg x, \, e \to \neg y \newline $
+		
+		Exactly has 4 autarkies.
+		
+	}
+\end{exampleblock} 
+%\textbf{lean kernel} of the original formula.
+\end{frame}
 %\begin{frame}{Autarky reduction}
 % \begin{exampleblock}{Example}
 %    {
@@ -769,6 +787,7 @@ Deciding the existence of $E_1$-autarky can be done in
 \end{enumerate}
 
 \end{frame}
+
 
 %\begin{frame}{Selected boolean functions}
 %Translation \textbf{t} chooses for each $v \in E$ and $f \in s(v)$ a distinct new \textbf{bf-variable} \newline 
