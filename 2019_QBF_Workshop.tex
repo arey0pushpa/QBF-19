@@ -130,28 +130,28 @@
 
 	\begin{alertblock}{DQCNF formula}
 	{		
-		\only<1,5-8> {
+		\only<1> {
 			$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
-			\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
+			(a \lor b \lor x) \land  (\ov{a} \lor \ov{b} \lor \ov{x}) \land  (\ov{a} \lor b \lor y) \land  (a \lor \ov{b} \lor \ov{y}) \land \newline 
+			(c \lor x \lor y) \land  (c \lor \ov{x} \lor \ov{y} \lor a) \land  (\ov{c} \lor x \lor \ov{y}) \land  (\ov{c} \lor \ov{x} \lor y) \land  \newline 
+			(d \lor e \lor x) \land  (\ov{d} \lor \ov{e} \lor \ov{x} \lor c) \land  (\ov{d} \lor e \lor y) \land  (d \lor \ov{e} \lor \ov{y}) $
 		}
-		\only<2,9> {
+		\only<2,5-9> {
 		$F$ :=	$ \forall x, y \, \exists \textcolor{orange}{a(x)} \, \exists  \textcolor{orange}{b(y)} \, \exists \textcolor{orange}{c(x,y)} \, \exists \textcolor{orange}{d(x)} \, \exists \textcolor{orange}{e(y)} :
-		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
+		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
 		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 	}
   \only<3> {
 	$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}},  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
 	\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
   }
   \only<4> {
 	F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}},  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
 	\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x},\textcircled{c}\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
 }
 	}
@@ -234,31 +234,31 @@ Ans. Any boolean function allowed by \textbf{dependency set variables}.
 \begin{alertblock}{DQCNF formula} {
 \only<1>	{	
 $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
 	\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 }
 \only<2-4>{
 $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-    \{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+    \{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
 		\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} $
 }
 
 \only<5>{$F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
 	\textcolor{blue}{	\{\ov{x}, \ov{y},x\}, \{x,y,\ov{x}, c\}, \{x,\ov{y},y\}, \{\ov{x},y,\ov{y}\}} $ }  
 %    \pause 
 
 \only<6>{ $F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
+	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
 	\textcolor{blue}{	\cancel{\{\ov{x},e,x\}}, \cancel{\{x,y,\ov{x}, c\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}} $ }  
 %    \pause 
 
 \only<7>{ $F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline  
+\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline  
 	\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}$ } 
 
 }
@@ -286,32 +286,32 @@ $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exi
 \begin{alertblock}{DQCNF formula} {
 		\only<1>	{	
 			$F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+				\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
 			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} $
 		}
 		\only<2>	{	
 		$F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-		\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
+		\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}},  \newline 
 		\{c,x,y\},\{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} $
 	}
 	\only<3>	{	
 	$F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \, \exists c(x,y) : \newline 
-	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}}  \newline 
+	\textcolor{blue}{\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}},  \newline 
 	\{c,x,y\},  \textcolor{red}{\{c,\ov{x},\ov{y}, a\}}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} $
 }
 		\only<4-6>{
 		$F_1$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y) \,\exists c(x,y) : \newline 
-			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
 	\textcolor{blue} {\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}} $
 		}
 	
 		\only<7>{ $F_2$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
-		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+		\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
 		\textcolor{blue} {\{ x \Leftrightarrow y,x,y\}, \{ x \Leftrightarrow y,\ov{x},\ov{y}, a\}, \{\ov{x \Leftrightarrow y},x,\ov{y}\}, \{\ov{x \Leftrightarrow y},\ov{x},y\}}  $ }  
 	%    \pause 
 	
 	\only<8>{ $F_2$ :=	$ \forall x, y \,  \exists a(x) \, \exists  b(y)  : \newline 
-	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
+	\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
 	\textcolor{blue} { \cancel{\{ x \Leftrightarrow y,x,y\}},  \cancel{\{ x \Leftrightarrow y,\ov{x},\ov{y}, a\}},  \cancel{\{\ov{x \Leftrightarrow y},x,\ov{y}\}},  \cancel{\{\ov{x \Leftrightarrow y}}, \cancel{\ov{x},y\}}}  $ }  
 	%    \pause  
 	
@@ -356,7 +356,7 @@ $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exi
 	\only<6>{ $F_3$ :=	$\textcolor{blue}{	\cancel{\{\ov{x}, \ov{y},x\}}, \cancel{\{x, y,\ov{x}\}}, \cancel{\{x,\ov{y},y\}}, \cancel{\{\ov{x},y,\ov{y}\}}}		$  }
 	%    \pause  
 	
-	\only<7->{ $F_3$ :=	$\top $ }  
+	\only<7->{ $F_3$ :=	true }  
 	}
 \end{alertblock}
 
@@ -378,8 +378,8 @@ $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exi
 \begin{frame}{DQCNF F is SAT}
 \begin{alertblock}{DQCNF formula} {
 			$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
+			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
 			\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 		}
 \end{alertblock}
@@ -418,9 +418,19 @@ $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exi
 %\end{frame}
 
 \begin{frame}{Autarkies for DQCNF}
-Autarkies for SAT \newline 
-
-\textit{An autarky for a clause-set $F$ is a \textbf{partial assignment} $\varphi$ iff for every clause $C \in F$ either $\varphi$ does not ``touch" $C$, i.e., $var(\varphi) \cap var(C) = \emptyset$, \newline or $\varphi$ satisfies $C$.}\newline
+%\textit{An autarky for a clause-set $F$ is 
+\begin{block}{Autarkies for SAT}
+	A \textbf{partial assignment} $\varphi: var(F) \to \{0,1\}$ is an autarky iff 
+	\begin{itemize}
+		\item for every clause $C \in F$ either $\varphi$ does not ``touch" $C$, i.e., $var(\varphi) \cap var(C) = \emptyset$, or
+		\item  $\varphi$ satisfies $C$ i.e. $\varphi \ast C$ is true. 
+	\end{itemize}
+\pause 
+\end{block}
+\begin{exampleblock}{Example}
+	For $F$ = $\{a\}, \textcolor{blue}{\{a, b\}}$; \pause the partial assignment $b \to 1$ is an autarky. 
+\end{exampleblock}
+%	\newline
 
 %	$\overbrace{\tikz[baseline]{
 %			\node[fill=yellow!50,anchor=base] (t1)
@@ -437,12 +447,24 @@ Autarkies for SAT \newline
 
 \pause 
 
-\begin{itemize}
-	\item $\varphi$: 
-%	maps each existentially quantified variable of F to a Boolean function,	
-	assign existential variables v of F, with values now being \newline \textbf{boolean functions} as allowed by the dependency-set.
+ \begin{alertblock}{Autarkies for DQCNF}
+	\begin{itemize}
+	 \item $\varphi$
+	%	maps each existentially quantified variable of F to a Boolean function,	
+	assign existential variables v of F with \textbf{boolean functions} as allowed by the dependency-set.
+	
 	\item Making a clause ``true" now means making it a tautology.
-\end{itemize}
+	
+	\end{itemize}
+	
+\end{alertblock}
+%\begin{itemize}
+%	 \item $\varphi$
+%%	maps each existentially quantified variable of F to a Boolean function,	
+%	assign existential variables v of F, with values now being \newline \textbf{boolean functions} as allowed by the dependency-set. \newline
+%	
+%	\item Making a clause ``true" now means making it a tautology.
+%\end{itemize}
 
 %\begin{figure}[h!]
 %	\centering
@@ -460,6 +482,27 @@ Autarkies for SAT \newline
 %
 %%($var(\phi) \, \cap \, var(C)$ $\neq$ $\phi$)
 %An autarky $\phi$ for $F$ is \textbf{trivial} if $var(\phi) \, \cap \, var(C)$ = $\phi$ \newline
+\end{frame}
+
+
+\begin{frame}{DQCNF Autarky}
+\begin{exampleblock}{DQCNF formula} {
+	
+		\only{
+			$F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
+			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
+			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
+			\textcolor{blue}{\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\}, \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\}} \newline $
+		}
+		
+	 \pause
+
+				$d \to \neg x$ \newline $e \to \neg y$
+				%	Both these autarkies are also $Eaut_1$-autarkies.
+	}
+\end{exampleblock}
+
+%\textbf{lean kernel} of the original formula.
 \end{frame}
 
 \begin{frame}{The interesting cases}
@@ -511,14 +554,14 @@ Applications:
 
 \begin{frame}{The basic lemmas}
  \begin{lemma}[satisfiability-equivalence]
-  For an autarky $\varphi$ of $F$, $\varphi$ $\ast$ $F$ is satisfiability-equivalent to $F$.
+  For an autarky $\varphi$ of $F$, $\varphi \ast F$ is satisfiability-equivalent to $F$.
  \end{lemma}
 %\pause
 \only<1>{\begin{proof}
- 	($\leftarrow$) A satisfying assignment of F satisfies also
+ 	If there is a satisfying assignment of F it satisfies also
  	$\varphi \ast F$, since just clauses have been removed. 
  	
- 	 ($\to$) If $\phi$ is a total satisfying assignment for $\varphi \ast F$, then $\varphi \cup \phi$ is a (partial) satisfying assignment for F.
+ 	If $\phi$ is a total satisfying assignment for $\varphi \ast F$, then $\varphi \cup \phi$ is a (partial) satisfying assignment for F.
  \end{proof}
 }
 \only<2->{
@@ -632,8 +675,8 @@ Applications:
 	\begin{alertblock}{DQCNF formula}
 		{		
 		F :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exists d(x) \, \exists e(y) :
-			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\}  \newline 
-			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+			\{a,b,x\}, \{\ov{a},\ov{b},\ov{x}\}, \{\ov{a},b,y\}, \{a,\ov{b},\ov{y}\},  \newline 
+			\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
 			\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 		}
 	\end{alertblock}
@@ -652,7 +695,7 @@ $E_1$ only uses one existential variable.
 \begin{alertblock}{DQCNF formula}
 	{		
 		$F_1$ :=	$ \forall x, y \, \exists c(x,y) \, \exists d(x) \, \exists e(y) : \newline 
-		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\} \newline 
+		\{c,x,y\}, \{c,\ov{x},\ov{y}, a\}, \{\ov{c},x,\ov{y}\}, \{\ov{c},\ov{x},y\}, \newline 
 		\{d,e,x\}, \{\ov{d},\ov{e},\ov{x}, c\} \{\ov{d},e,y\}, \{d,\ov{e},\ov{y}\} $
 	}
 \end{alertblock}
@@ -792,7 +835,10 @@ Deciding the existence of $E_1$-autarky can be done in
 
 \begin{frame}{Numbers: Computing normalforms in DQBF track}
 334 instances in the DQBF track of QBFEVAL'18 in 9000s. \newline
-(finding an autarky is quick, proving UNSAT: time consuming.)
+(finding an autarky is quick, proving UNSAT: time consuming.)\newline
+
+330 instances are $E_1$+$A_1$-lean (have no non-trivial $E_1$- or $A_1$-autarky). 
+
 %\begin{itemize}
 %    \item 330 instances are $E_1$+$A_1$-lean (have no non-trivial $E_1$- or $A_1$-autarky). 
 %    \item From the remaining 4 instances, all are $E_1$-lean, one is $A_1$-satisfiable, 
@@ -801,9 +847,7 @@ Deciding the existence of $E_1$-autarky can be done in
 %    \item but allow $A_1$-autarkies eliminating in both cases around 80 of variables
 %and clauses (while adding $E_1$ does not change this).
 %\end{itemize}
-
 %\end{frame}
-
 %\begin{frame}{Results}
 \begin{table}[t]
   \centering
@@ -817,7 +861,7 @@ Deciding the existence of $E_1$-autarky can be done in
    
   % \\\cline{2-5}
    {} & {} & {} & {\textbf{c(F)}} & {\textbf{c(F')}} \\\hline
-    {0.} & 330 instances  & $E_1$+$A_1$-lean & - & - \\\hline 
+%    {0.} & 330 instances  & $E_1$+$A_1$-lean & - & - \\\hline 
      {1.} & \cellcolor{blue!18}\textsc{bloem\_eq1.dqdimacs} & {\color{blue}{\textbf{A1-satisfiable}}} & \textbf{-} & - \\\hline 
    {2.} &   \cellcolor{red!25} \textsc{tentrup17\_ltl2dba\_theta}\_ \textsc{env1.dqdimacs} & {\color{red}{E1+A1-satisfiable}} & - & - \\\hline 
     {3.} & \cellcolor{green!25}\textsc{bloem\_ex1.dqdimacs} & {\color{britishracinggreen}{A1: non-trivial autarky}} & 52 & \textbf{18}  \\\hline 
