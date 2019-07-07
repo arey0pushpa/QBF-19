@@ -40,6 +40,7 @@
 
 \usepackage{graphicx}
 \usepackage{subcaption}
+\usepackage[usestackEOL]{stackengine}
 
 \usepackage{xcolor}% http://ctan.org/pkg/xcol
 \definecolor{OliveGreen}{rgb}{0.2,0.7,0.2}
@@ -123,6 +124,7 @@
 %\end{alertblock}
 %  
 %\end{frame}
+\strutlongstacks{T}
 
 \begin{frame}{Solve DQCNF: SAT or UNSAT?}
 
@@ -591,7 +593,7 @@ Applications:
  \pause 
   \begin{lemma}[autarky decomposition]
   	A DQCNF can always be decomposed into largest
-  	autark sub-DQCNF \newline and lean kernel (largest lean sub-DQCNF). \newline
+  	autark sub-DQCNF (satisfiable part by autarky) and largest lean sub-DQCNF (lean kernel ). \newline
   	
  	Every chain of autarky reductions starting
  	with F can be extended \newline to it's lean kernel (where
@@ -869,7 +871,7 @@ Deciding the existence of $E_1$-autarky can be done in
    {} & {} & {} & {\textbf{c(F)}} & {\textbf{c(F')}} \\\hline
 %    {0.} & 330 instances  & $E_1$+$A_1$-lean & - & - \\\hline 
      {1.} & \cellcolor{blue!18}\textsc{bloem\_eq1.dqdimacs} & {\color{blue}{\textbf{A1-satisfiable}}} & \textbf{-} & - \\\hline 
-   {2.} &   \cellcolor{red!25} \textsc{tentrup17\_ltl2dba\_theta}\_ \textsc{env1.dqdimacs} & {\color{red}{E1+A1-satisfiable}} & - & - \\\hline 
+   {2.} &   \cellcolor{red!25}{ \Centerstack{\textsc{tentrup17\_ltl2dba\_theta}\\\textsc{\_environment\_1.dqdimacs}}} & {\color{red}{E1+A1-satisfiable}} & - & - \\\hline 
     {3.} & \cellcolor{green!25}\textsc{bloem\_ex1.dqdimacs} & {\color{britishracinggreen}{A1: non-trivial autarky}} & 52 & \textbf{18}  \\\hline 
   {4.} &   \cellcolor{green!25} \textsc{bloem\_ex2.dqdimacs} & {\color{britishracinggreen}{A1: non-trivial autarky}} & 139 & 99 \\\hline 
 %Qute 130 91 39 720K
