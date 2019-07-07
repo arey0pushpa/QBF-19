@@ -514,7 +514,7 @@ $F$ :=	$ \forall x, y \, \exists a(x) \, \exists  b(y) \, \exists c(x,y) \, \exi
 	\item Elimination of \textbf{pure literals} is a special case of an ``autarky reduction". 
 	\newline
 	\begin{exampleblock}{Pure literal}
-			$\forall x, y \exists a(x) b(x,y) : \{x, \ov{y}, \ov{a}\}, \{\ov{x}, y, a, b\}$ \newline 
+			$\forall x, y \exists a(x) b(x,y) : \{x, \ov{y}, \ov{a}\}, \textcolor{blue}{\{\ov{x}, a, b\}, \{y, b\}} $ \newline 
 		Assign $b \to 1$.
 	\end{exampleblock}
 
@@ -590,6 +590,9 @@ Applications:
 % \end{lemma}
  \pause 
   \begin{lemma}[autarky decomposition]
+  	A DQCNF can always be decomposed into largest
+  	autark sub-DQCNF \newline and lean kernel (largest lean sub-DQCNF). \newline
+  	
  	Every chain of autarky reductions starting
  	with F can be extended \newline to it's lean kernel (where
  	it necessarily ends).
